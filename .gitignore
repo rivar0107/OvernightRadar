@@ -15,6 +15,16 @@ web/dist/
 .idea/
 .vscode/
 
+# Local working docs
+docs/
+
+# Claude Code local config
+.claude/
+
+# Tests (not needed for deployment)
+tests/
+
 # Data (keep structure, ignore content except .gitkeep)
 data/results/*.json
 !data/results/.gitkeep
+skills-lock.json
