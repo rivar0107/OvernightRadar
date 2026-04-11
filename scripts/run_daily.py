@@ -110,3 +110,249 @@ def calc_conditional_prob(
     avg_impact = float(cn_on_sig.mean())
 
     return prob_high_open, avg_impact, int(sample_count)
+
+
+# ─── 数据采集 ─────────────────────────────────────────────
+
+def fetch_us_data(tickers: list, days: int = 150) -> dict:
+    """
+    拉取美股 ETF 日线数据。
+    返回: {ticker: DataFrame(date_index, close)} ，每个包含最近 `days` 个交易日。
+    """
+    import yfinance as yf
+
+    end_date = datetime.now()
+    start_date = end_date - timedelta(days=int(days * 1.8))
+
+    raw = yf.download(
+        tickers=" ".join(tickers),
+        start=start_date.strftime("%Y-%m-%d"),
+        end=end_date.strftime("%Y-%m-%d"),
+        auto_adjust=True,
+        progress=False,
+    )
+
+    result = {}
+    for ticker in tickers:
+        try:
+            if len(tickers) > 1:
+                close = raw[("Close", ticker)].dropna()
+            else:
+                close = raw["Close"].dropna()
+            df = pd.DataFrame({"close": close})
+            df = df.tail(days)
+            if len(df) > 1:
+                result[ticker] = df
+        except (KeyError, TypeError):
+            print(f"WARNING: 无法获取 {ticker} 数据", file=sys.stderr)
+
+    return result
+
+
+def fetch_cn_index_data(index_code: str, days: int = 150):
+    """
+    拉取申万行业指数日线数据。
+    返回: DataFrame(date_index, open, close)，最近 `days` 个交易日。失败返回 None。
+    """
+    import akshare as ak
+
+    try:
+        df = ak.index_hist_sw(
+            symbol=index_code,
+            period="day",
+        )
+        if df is None or df.empty:
+            return None
+
+        df = df.tail(days)
+        # Rename columns - handle both possible column name formats
+        col_map = {}
+        for col in df.columns:
+            if col in ("日期", "date"):
+                col_map[col] = "date"
+            elif col in ("开盘", "open"):
+                col_map[col] = "open"
+            elif col in ("收盘", "close"):
+                col_map[col] = "close"
+        df = df.rename(columns=col_map)
+
+        if "date" not in df.columns:
+            return None
+
+        df["date"] = pd.to_datetime(df["date"])
+        df = df.set_index("date")
+        # Only keep open and close columns
+        keep_cols = [c for c in ["open", "close"] if c in df.columns]
+        if not keep_cols:
+            return None
+        df = df[keep_cols].astype(float)
+        return df
+    except Exception as e:
+        print(f"WARNING: 获取申万指数 {index_code} 失败: {e}", file=sys.stderr)
+        return None
+
+
+def compute_daily_return(close_series: pd.Series) -> pd.Series:
+    """计算日涨跌幅（%）。"""
+    return close_series.pct_change() * 100
+
+
+def compute_open_return(df: pd.DataFrame) -> pd.Series:
+    """
+    计算次日开盘涨跌幅（%）。
+    open_return[T] = (open[T] - close[T-1]) / close[T-1] * 100
+    """
+    prev_close = df["close"].shift(1)
+    return (df["open"] - prev_close) / prev_close * 100
+
+
+# ─── 主运行逻辑 ───────────────────────────────────────────
+
+def align_dates(us_date, cn_dates: pd.DatetimeIndex):
+    """找到美股日期 T 之后最近的 A 股交易日 T'。"""
+    future = cn_dates[cn_dates > us_date]
+    if len(future) == 0:
+        return None
+    return future[0]
+
+
+def run_daily(output_dir: str = "data/results"):
+    """
+    主入口：采集数据 → 计算 → 输出 JSON。
+    返回生成的报告 dict，失败返回 None。
+    """
+    tickers = [s["us_etf"] for s in SECTOR_MAP]
+
+    # 1. 拉取美股数据
+    print("Fetching US data...")
+    us_data = fetch_us_data(tickers)
+    if not us_data:
+        print("ERROR: 无美股数据", file=sys.stderr)
+        return None
+
+    # 确定报告日期：最近的美股交易日
+    latest_dates = [df.index[-1] for df in us_data.values()]
+    report_date = max(latest_dates).strftime("%Y-%m-%d")
+
+    # 检查今天是否已经生成过
+    output_path = os.path.join(output_dir, f"{report_date}.json")
+    if os.path.exists(output_path):
+        print(f"SKIP: {output_path} already exists")
+        return None
+
+    # 2. 拉取 A 股数据
+    print("Fetching CN data...")
+    cn_data = {}
+    for sector in SECTOR_MAP:
+        df = fetch_cn_index_data(sector["cn_index"])
+        if df is not None:
+            cn_data[sector["cn_index"]] = df
+
+    # 3. 计算每对板块
+    cards = []
+    quiet_sectors = []
+
+    for sector in SECTOR_MAP:
+        us_ticker = sector["us_etf"]
+        cn_idx_code = sector["cn_index"]
+
+        if us_ticker not in us_data or cn_idx_code not in cn_data:
+            print(f"SKIP: {sector['us_name']} 数据不完整")
+            continue
+
+        us_df = us_data[us_ticker]
+        cn_df = cn_data[cn_idx_code]
+
+        # 计算美股日涨跌幅
+        us_returns = compute_daily_return(us_df["close"]).dropna()
+
+        # 计算 A 股次日开盘涨跌幅
+        cn_open_returns = compute_open_return(cn_df).dropna()
+
+        # 对齐日期：美股 T → A 股 T+1
+        us_aligned = []
+        cn_aligned = []
+        cn_dates = cn_open_returns.index
+
+        for us_date in us_returns.index:
+            cn_date = align_dates(us_date, cn_dates)
+            if cn_date is not None:
+                us_aligned.append(us_returns[us_date])
+                cn_aligned.append(cn_open_returns[cn_date])
+
+        if len(us_aligned) < 10:
+            print(f"SKIP: {sector['us_name']} 配对数据不足({len(us_aligned)})")
+            continue
+
+        us_series = pd.Series(us_aligned)
+        cn_series = pd.Series(cn_aligned)
+
+        # 当日美股涨跌幅（最新一天）
+        us_today_change = float(us_returns.iloc[-1])
+
+        # 计算条件概率
+        prob, avg_impact, sample_count = calc_conditional_prob(
+            us_series, cn_series, threshold=THRESHOLD, window=WINDOW
+        )
+
+        is_significant = abs(us_today_change) > THRESHOLD
+
+        card = {
+            "us_name": sector["us_name"],
+            "us_etf": sector["us_etf"],
+            "us_change_pct": round(us_today_change, 2),
+            "cn_name": sector["cn_name"],
+            "cn_etf_name": sector["cn_etf_name"],
+            "cn_etf_code": sector["cn_etf_code"],
+            "is_significant": is_significant,
+        }
+
+        if prob is not None:
+            card["prob_high_open"] = round(prob, 2)
+            card["avg_impact"] = round(avg_impact, 2)
+            card["sample_count"] = sample_count
+            card["window_days"] = WINDOW
+        else:
+            card["prob_high_open"] = None
+            card["avg_impact"] = None
+            card["sample_count"] = 0
+            card["window_days"] = WINDOW
+
+        if is_significant:
+            cards.append(card)
+        else:
+            quiet_sectors.append(card)
+
+    # 按条件概率 × 涨跌幅绝对值 降序排列
+    cards.sort(
+        key=lambda c: (c.get("prob_high_open") or 0) * abs(c["us_change_pct"]),
+        reverse=True,
+    )
+
+    # 4. 组装报告
+    report = {
+        "date": report_date,
+        "weekday": _weekday_cn(report_date),
+        "cards": cards,
+        "quiet_sectors": quiet_sectors,
+        "updated_at": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+08:00"),
+    }
+
+    # 5. 输出 JSON
+    os.makedirs(output_dir, exist_ok=True)
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(report, f, ensure_ascii=False, indent=2)
+
+    print(f"OK: {output_path} ({len(cards)} cards, {len(quiet_sectors)} quiet)")
+    return report
+
+
+def _weekday_cn(date_str: str) -> str:
+    """日期字符串 → 中文星期"""
+    weekdays = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+    dt = datetime.strptime(date_str, "%Y-%m-%d")
+    return weekdays[dt.weekday()]
+
+
+if __name__ == "__main__":
+    run_daily()
