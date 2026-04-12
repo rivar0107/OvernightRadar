@@ -48,7 +48,7 @@
         {
           "name": "中微公司",
           "code": "688012",
-          "change_pct": null
+          "change_pct": 0.84
         }
       ]
     },
@@ -190,17 +190,17 @@
         {
           "name": "立讯精密",
           "code": "002475",
-          "change_pct": null
+          "change_pct": 5.61
         },
         {
           "name": "歌尔股份",
           "code": "002241",
-          "change_pct": null
+          "change_pct": 3.04
         },
         {
           "name": "京东方A",
           "code": "000725",
-          "change_pct": null
+          "change_pct": 0.75
         }
       ]
     },
@@ -266,7 +266,7 @@
         {
           "name": "寒武纪",
           "code": "688256",
-          "change_pct": null
+          "change_pct": 1.06
         },
         {
           "name": "海光信息",
@@ -319,5 +319,5 @@
       ]
     }
   ],
-  "updated_at": "2026-04-12T15:11:25+08:00"
+  "updated_at": "2026-04-12T21:33:08+08:00"
 }
