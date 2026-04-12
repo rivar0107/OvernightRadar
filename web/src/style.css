@@ -28,6 +28,12 @@ body {
 .title {
   font-size: 22px;
   font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.slogan {
+  font-size: 14px;
+  color: #666;
   margin-bottom: 8px;
 }
 
