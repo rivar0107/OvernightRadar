@@ -3,13 +3,13 @@
   "weekday": "周五",
   "market_indices": {
     "sp500": {
-      "change_pct": -0.07
+      "change_pct": -0.11
     },
     "nasdaq": {
-      "change_pct": 0.14
+      "change_pct": 0.35
     },
     "dow": {
-      "change_pct": -0.55
+      "change_pct": -0.56
     }
   },
   "market_summary": "2强0弱6中性",
@@ -18,7 +18,7 @@
       "us_name": "半导体",
       "us_etf": "SOXX",
       "us_change_pct": 2.1,
-      "relative_strength": 2.17,
+      "relative_strength": 2.21,
       "volatility": {
         "daily_vol_20d": 2.18,
         "vol_multiple": 1.0,
@@ -43,12 +43,12 @@
         {
           "name": "北方华创",
           "code": "002371",
-          "change_pct": null
+          "change_pct": 0.86
         },
         {
           "name": "中微公司",
           "code": "688012",
-          "change_pct": null
+          "change_pct": 0.84
         }
       ]
     },
@@ -56,7 +56,7 @@
       "us_name": "新能源车",
       "us_etf": "DRIV",
       "us_change_pct": 1.04,
-      "relative_strength": 1.11,
+      "relative_strength": 1.15,
       "volatility": {
         "daily_vol_20d": 1.62,
         "vol_multiple": 0.6,
@@ -94,7 +94,7 @@
       "us_name": "机器人",
       "us_etf": "BOTZ",
       "us_change_pct": 1.46,
-      "relative_strength": 1.53,
+      "relative_strength": 1.57,
       "volatility": {
         "daily_vol_20d": 1.83,
         "vol_multiple": 0.8,
@@ -132,7 +132,7 @@
       "us_name": "商业航天",
       "us_etf": "UFO",
       "us_change_pct": 1.01,
-      "relative_strength": 1.08,
+      "relative_strength": 1.12,
       "volatility": {
         "daily_vol_20d": 2.66,
         "vol_multiple": 0.4,
@@ -170,7 +170,7 @@
       "us_name": "科技",
       "us_etf": "XLK",
       "us_change_pct": 0.39,
-      "relative_strength": 0.46,
+      "relative_strength": 0.5,
       "volatility": {
         "daily_vol_20d": 1.36,
         "vol_multiple": 0.3,
@@ -190,7 +190,7 @@
         {
           "name": "立讯精密",
           "code": "002475",
-          "change_pct": null
+          "change_pct": 5.61
         },
         {
           "name": "歌尔股份",
@@ -200,7 +200,7 @@
         {
           "name": "京东方A",
           "code": "000725",
-          "change_pct": null
+          "change_pct": 0.75
         }
       ]
     },
@@ -208,7 +208,7 @@
       "us_name": "存储",
       "us_etf": "DRAM",
       "us_change_pct": 0.15,
-      "relative_strength": 0.22,
+      "relative_strength": 0.26,
       "volatility": {
         "daily_vol_20d": 3.35,
         "vol_multiple": 0.0,
@@ -246,7 +246,7 @@
       "us_name": "AI/算力",
       "us_etf": "THNQ",
       "us_change_pct": 0.08,
-      "relative_strength": 0.15,
+      "relative_strength": 0.19,
       "volatility": {
         "daily_vol_20d": 1.68,
         "vol_multiple": 0.0,
@@ -284,7 +284,7 @@
       "us_name": "黄金",
       "us_etf": "GLD",
       "us_change_pct": -0.18,
-      "relative_strength": -0.11,
+      "relative_strength": -0.07,
       "volatility": {
         "daily_vol_20d": 1.75,
         "vol_multiple": 0.1,
@@ -319,5 +319,5 @@
       ]
     }
   ],
-  "updated_at": "2026-04-12T09:01:57+08:00"
+  "updated_at": "2026-04-12T09:13:48+08:00"
 }
