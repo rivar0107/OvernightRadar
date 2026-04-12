@@ -45,20 +45,17 @@ export async function renderRadarView(container, header) {
     <p class="date">${report.market_summary} · ${report.date} ${report.weekday}</p>
   `;
 
+  // 免责声明 (顶部)
+  const disclaimerHtml = `
+    <div class="disclaimer wl-top-disclaimer">
+      <p>仅供数据参考，不构成投资建议。数据来源：Yahoo Finance、AKShare、公开市场数据。</p>
+    </div>
+  `;
+
   // 卡片列表
   if (!report.sectors || report.sectors.length === 0) {
-    container.innerHTML = '<p class="empty-state">暂无板块数据</p>';
+    container.innerHTML = disclaimerHtml + '<p class="empty-state">暂无板块数据</p>';
   } else {
-    container.innerHTML = report.sectors.map(renderSectorCard).join('');
+    container.innerHTML = disclaimerHtml + report.sectors.map(renderSectorCard).join('');
   }
-
-  // 免责声明
-  container.innerHTML += `
-    <footer class="disclaimer">
-      <p class="disclaimer-title">⚠️ 免责声明</p>
-      <p>本工具仅供数据参考，不构成任何投资建议或投资指导。</p>
-      <p>数据来源：Yahoo Finance、AKShare、公开市场数据。</p>
-      <p>股市有风险，投资需谨慎。</p>
-    </footer>
-  `;
 }
