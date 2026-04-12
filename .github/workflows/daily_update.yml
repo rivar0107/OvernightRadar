@@ -28,6 +28,8 @@ jobs:
 
       - name: Run watchlist data fetch
         run: python scripts/fetch_watchlist.py
+        env:
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
 
       - name: Commit and push if changed
         run: |
