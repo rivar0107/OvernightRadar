@@ -38,12 +38,12 @@
         {
           "name": "中际旭创",
           "code": "300308",
-          "change_pct": 6.01
+          "change_pct": null
         },
         {
           "name": "北方华创",
           "code": "002371",
-          "change_pct": 0.86
+          "change_pct": null
         },
         {
           "name": "中微公司",
@@ -195,7 +195,7 @@
         {
           "name": "歌尔股份",
           "code": "002241",
-          "change_pct": 3.04
+          "change_pct": null
         },
         {
           "name": "京东方A",
@@ -319,5 +319,5 @@
       ]
     }
   ],
-  "updated_at": "2026-04-12T09:28:59+08:00"
+  "updated_at": "2026-04-12T12:55:06+08:00"
 }
