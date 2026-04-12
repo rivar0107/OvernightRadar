@@ -38,12 +38,12 @@
         {
           "name": "中际旭创",
           "code": "300308",
-          "change_pct": null
+          "change_pct": 6.01
         },
         {
           "name": "北方华创",
           "code": "002371",
-          "change_pct": null
+          "change_pct": 0.86
         },
         {
           "name": "中微公司",
@@ -319,5 +319,5 @@
       ]
     }
   ],
-  "updated_at": "2026-04-12T12:55:06+08:00"
+  "updated_at": "2026-04-12T13:56:06+08:00"
 }
