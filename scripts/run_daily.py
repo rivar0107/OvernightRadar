@@ -112,6 +112,115 @@ def calc_conditional_prob(
     return prob_high_open, avg_impact, int(sample_count)
 
 
+# ─── V1.1 新增计算函数 ─────────────────────────────────────
+
+def calc_relative_strength(sector_change: float, spy_change: float) -> float:
+    """板块相对强度 = 板块涨跌幅 - 标普500涨跌幅。"""
+    return round(sector_change - spy_change, 2)
+
+
+def calc_volatility_surprise(returns: pd.Series, window: int = 20) -> dict:
+    """
+    波动率偏离：当日波动相对近期日均波动的倍数。
+
+    返回:
+        {"daily_vol_20d": float, "vol_multiple": float, "is_abnormal": bool}
+    """
+    if len(returns) < 2:
+        return {"daily_vol_20d": 0.0, "vol_multiple": 0.0, "is_abnormal": False}
+
+    recent = returns.abs().iloc[-window:] if len(returns) >= window else returns.abs()
+    daily_vol = float(recent.mean())
+    today_abs = float(abs(returns.iloc[-1]))
+    vol_multiple = round(today_abs / daily_vol, 1) if daily_vol > 0 else 0.0
+
+    return {
+        "daily_vol_20d": round(daily_vol, 2),
+        "vol_multiple": vol_multiple,
+        "is_abnormal": vol_multiple > 2.0,
+    }
+
+
+def calc_trend(returns: pd.Series) -> dict:
+    """
+    连涨/连跌趋势。
+
+    返回:
+        {"direction": "up"/"down"/"flat", "consecutive_days": int, "cumulative_pct": float}
+    """
+    if len(returns) < 1:
+        return {"direction": "flat", "consecutive_days": 0, "cumulative_pct": 0.0}
+
+    last = returns.iloc[-1]
+    if abs(last) < 0.01:
+        return {"direction": "flat", "consecutive_days": 0, "cumulative_pct": 0.0}
+
+    direction = "up" if last > 0 else "down"
+    consecutive = 0
+    cumulative = 0.0
+
+    for i in range(len(returns) - 1, -1, -1):
+        r = returns.iloc[i]
+        if direction == "up" and r > 0:
+            consecutive += 1
+            cumulative += r
+        elif direction == "down" and r < 0:
+            consecutive += 1
+            cumulative += r
+        else:
+            break
+
+    return {
+        "direction": direction,
+        "consecutive_days": consecutive,
+        "cumulative_pct": round(cumulative, 2),
+    }
+
+
+def calc_sentiment(
+    relative_strength: float,
+    vol_multiple: float,
+    direction: str,
+    consecutive_days: int,
+) -> dict:
+    """
+    情绪等级判定。从等级4开始往下匹配，命中即止。
+
+    返回:
+        {"sentiment": str, "sentiment_level": int}
+    """
+    # 等级 4: 强烈看多
+    if relative_strength > 2.0 and (
+        vol_multiple > 2.0 or (direction == "up" and consecutive_days >= 3)
+    ):
+        return {"sentiment": "强烈看多", "sentiment_level": 4}
+    # 等级 3: 偏多
+    if relative_strength > 0.5 and (
+        vol_multiple > 1.5 or (direction == "up" and consecutive_days >= 2)
+    ):
+        return {"sentiment": "偏多", "sentiment_level": 3}
+    # 等级 0: 强烈看空
+    if relative_strength < -2.0 and (
+        vol_multiple > 2.0 or (direction == "down" and consecutive_days >= 3)
+    ):
+        return {"sentiment": "强烈看空", "sentiment_level": 0}
+    # 等级 1: 偏空
+    if relative_strength < -0.5 and (
+        vol_multiple > 1.5 or (direction == "down" and consecutive_days >= 2)
+    ):
+        return {"sentiment": "偏空", "sentiment_level": 1}
+    # 等级 2: 中性
+    return {"sentiment": "中性", "sentiment_level": 2}
+
+
+def build_market_summary(sectors: list) -> str:
+    """市场总览文案：X强Y弱Z中性。"""
+    strong = sum(1 for s in sectors if s.get("sentiment_level", 2) >= 3)
+    weak = sum(1 for s in sectors if s.get("sentiment_level", 2) <= 1)
+    neutral = len(sectors) - strong - weak
+    return f"{strong}强{weak}弱{neutral}中性"
+
+
 # ─── 数据采集 ─────────────────────────────────────────────
 
 def fetch_us_data(tickers: list, days: int = 150) -> dict:
