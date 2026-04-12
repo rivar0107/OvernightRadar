@@ -43,12 +43,12 @@
         {
           "name": "北方华创",
           "code": "002371",
-          "change_pct": 0.86
+          "change_pct": null
         },
         {
           "name": "中微公司",
           "code": "688012",
-          "change_pct": 0.84
+          "change_pct": null
         }
       ]
     },
@@ -190,7 +190,7 @@
         {
           "name": "立讯精密",
           "code": "002475",
-          "change_pct": 5.61
+          "change_pct": null
         },
         {
           "name": "歌尔股份",
@@ -319,5 +319,5 @@
       ]
     }
   ],
-  "updated_at": "2026-04-12T08:42:03+08:00"
+  "updated_at": "2026-04-12T09:01:57+08:00"
 }
