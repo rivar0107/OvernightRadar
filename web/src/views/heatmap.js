@@ -158,8 +158,8 @@ async function renderMarketView(container, header, market, benchmark = null) {
     </div>
   `;
 
-  // 市场切换器（左侧垂直）
-  const marketSwitcherHtml = '<div id="wl-market-switcher" class="wl-market-switcher-left"></div>';
+  // 市场切换器（顶部水平）
+  const marketSwitcherHtml = '<div id="wl-market-switcher" class="wl-market-switcher-top"></div>';
 
   // 免责声明
   const disclaimerHtml = `
@@ -169,13 +169,11 @@ async function renderMarketView(container, header, market, benchmark = null) {
     </div>
   `;
 
-  // 主内容区：左侧市场切换 + 右侧内容
+  // 主内容区
   const mainContentHtml = `
     <div class="wl-main-layout">
-      <div class="wl-left-sidebar">
-        ${marketSwitcherHtml}
-      </div>
       <div class="wl-right-content">
+        ${marketSwitcherHtml}
         <nav class="wl-indicators" id="wl-indicators"></nav>
         <div id="wl-heatmap"></div>
       </div>
