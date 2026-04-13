@@ -11,9 +11,11 @@ import json
 import os
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import requests
+import yfinance as yf
+import pandas as pd
 
 sys.path.insert(0, os.path.dirname(__file__))
 from etf_config import ETF_GROUPS, CN_LINKED_TICKERS, ALL_TICKERS, get_group_key
@@ -29,10 +31,9 @@ BATCH_SIZE = 15  # 每批请求数（Finnhub 免费 60 calls/min）
 BATCH_DELAY = 2  # 批次间隔（秒）
 TICKER_DELAY = 1.1  # 单个请求间隔（秒），确保 <60/min
 
-# Google Sheet
+# Google Sheet (三个 tab: Market Structure, Industry/Thematic, Assets)
 SHEET_ID = "1_xv9pPrxhx9A4OyhrvyTTJuKNXk8rn0m-eAWvnbdXWI"
-SHEET_GID = "1071980810"
-CSV_URL = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid={SHEET_GID}"
+SHEET_GIDS = [1071980810, 878537610, 1224425390]
 
 
 def load_api_key() -> str:
@@ -98,12 +99,25 @@ def fetch_quotes(tickers: list, api_key: str) -> dict:
 
 # ─── Google Sheet: REL 数据 ───────────────────────────────
 
-def fetch_sheet_csv() -> str:
-    """下载 Google Sheet CSV。"""
-    print("Fetching Google Sheet...")
-    resp = requests.get(CSV_URL, timeout=30)
-    resp.raise_for_status()
-    return resp.text
+def fetch_all_sheet_tabs() -> dict:
+    """下载并合并三个 Sheet tab 的 REL 数据。"""
+    print("Fetching Google Sheet (3 tabs)...")
+    merged = {}
+
+    for gid in SHEET_GIDS:
+        url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid={gid}"
+        try:
+            resp = requests.get(url, timeout=30)
+            resp.raise_for_status()
+            tab_data = parse_sheet_rel(resp.text)
+            # 合并，已有数据的不覆盖（第一个 tab 优先）
+            for ticker, data in tab_data.items():
+                if ticker not in merged:
+                    merged[ticker] = data
+        except Exception as e:
+            print(f"  WARNING: Sheet tab {gid} 获取失败 ({e})", file=sys.stderr)
+
+    return merged
 
 
 def parse_sheet_rel(csv_text: str) -> dict:
@@ -158,6 +172,100 @@ def parse_sheet_rel(csv_text: str) -> dict:
             "ytd": safe_float(row[15]),
         }
 
+    return result
+
+
+# ─── yfinance: 计算 REL 回退 ──────────────────────────────
+
+def compute_rel_with_yfinance(missing_tickers: list) -> dict:
+    """
+    用 yfinance 下载历史价格，计算 REL（相对 SPY 的超额收益）。
+    返回: {ticker: {"rel": {...}, "rank": {...}, "ytd": float}}
+
+    REL_n = ETF_n日收益率 - SPY_n日收益率
+    """
+    if not missing_tickers:
+        return {}
+
+    periods = [5, 20, 60, 120]
+    # 需要多取一些数据点确保有足够交易日
+    lookback_days = 200
+    end_date = datetime.now()
+    start_date = end_date - timedelta(days=lookback_days)
+
+    # 下载所有缺失 ticker + SPY 的历史数据
+    all_symbols = list(set(missing_tickers + ["SPY"]))
+    print(f"  yfinance: 下载 {len(all_symbols)} 个标的的历史数据...")
+
+    try:
+        data = yf.download(
+            all_symbols,
+            start=start_date.strftime("%Y-%m-%d"),
+            end=end_date.strftime("%Y-%m-%d"),
+            progress=False,
+            auto_adjust=True,
+        )
+    except Exception as e:
+        print(f"  WARNING: yfinance 下载失败 ({e})", file=sys.stderr)
+        return {}
+
+    if data.empty:
+        print("  WARNING: yfinance 返回空数据", file=sys.stderr)
+        return {}
+
+    # 提取收盘价
+    close = data["Close"] if "Close" in data.columns else pd.DataFrame()
+
+    # 如果只有单个 ticker，yfinance 返回 Series 而非 DataFrame
+    if isinstance(close, pd.Series):
+        close = close.to_frame(name=all_symbols[0])
+
+    if close.empty or "SPY" not in close.columns:
+        print("  WARNING: 无 SPY 数据，无法计算 REL", file=sys.stderr)
+        return {}
+
+    spy_close = close["SPY"].dropna()
+
+    result = {}
+    for ticker in missing_tickers:
+        if ticker not in close.columns:
+            continue
+
+        ticker_close = close[ticker].dropna()
+        if len(ticker_close) < 5:
+            continue
+
+        rel_data = {}
+        rank_data = {}
+        for period in periods:
+            if len(ticker_close) < period or len(spy_close) < period:
+                rel_data[f"rel_{period}"] = 0.0
+                rank_data[f"r_{period}"] = 0
+                continue
+
+            # 收益率 = (最新价 - N日前价) / N日前价 * 100
+            etf_ret = (ticker_close.iloc[-1] / ticker_close.iloc[-period] - 1) * 100
+            spy_ret = (spy_close.iloc[-1] / spy_close.iloc[-period] - 1) * 100
+            rel = round(etf_ret - spy_ret, 2)
+            rel_data[f"rel_{period}"] = rel
+
+            # 简化 Rank: 基于 REL 绝对值排名（100分制近似）
+            rank_data[f"r_{period}"] = 50  # 占位，后续可优化
+
+        # YTD 收益率
+        ytd_ret = 0.0
+        year_start = f"{end_date.year}-01-01"
+        ticker_ytd = ticker_close[ticker_close.index >= year_start]
+        if len(ticker_ytd) >= 2:
+            ytd_ret = round((ticker_ytd.iloc[-1] / ticker_ytd.iloc[0] - 1) * 100, 2)
+
+        result[ticker] = {
+            "rel": rel_data,
+            "rank": rank_data,
+            "ytd": ytd_ret,
+        }
+
+    print(f"  yfinance: 计算了 {len(result)} 个 ticker 的 REL")
     return result
 
 
@@ -245,14 +353,20 @@ def run_fetch(output_dir: str = None):
         quotes = fetch_quotes(ALL_TICKERS, api_key)
         print(f"  Got {len(quotes)} quotes")
 
-        # 2. Google Sheet 获取 REL 数据
+        # 2. Google Sheet 获取 REL 数据（三个 tab 合并）
         sheet_rel = {}
         try:
-            csv_text = fetch_sheet_csv()
-            sheet_rel = parse_sheet_rel(csv_text)
+            sheet_rel = fetch_all_sheet_tabs()
             print(f"  Got REL data for {len(sheet_rel)} tickers from Sheet")
         except Exception as e:
             print(f"  WARNING: Sheet 获取失败 ({e})，REL 数据将使用默认值", file=sys.stderr)
+
+        # 3. yfinance 回退：为 Sheet 未覆盖的 ticker 计算 REL
+        missing_tickers = [t for t in ALL_TICKERS if t not in sheet_rel and t in quotes]
+        if missing_tickers:
+            print(f"  Computing REL for {len(missing_tickers)} uncovered tickers via yfinance...")
+            yf_rel = compute_rel_with_yfinance(missing_tickers)
+            sheet_rel.update(yf_rel)
 
         # 3. 合并数据
         etfs = []
