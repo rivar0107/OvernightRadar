@@ -45,3 +45,8 @@ export function fetchWatchlistData() {
 export function fetchRadarData() {
   return fetchLatest('results');
 }
+
+/** 获取A股市场观察数据 */
+export function fetchCNWatchlistData() {
+  return fetchLatest('cn_watchlist');
+}
