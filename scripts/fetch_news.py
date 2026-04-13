@@ -85,10 +85,13 @@ def deduplicate_news(news: List[Dict]) -> List[Dict]:
     Returns:
         去重后的新闻列表
     """
+    # 按时间戳降序排序，确保先处理最新的
+    sorted_news = sorted(news, key=lambda x: x.get('datetime', 0), reverse=True)
+
     seen = set()
     deduped = []
 
-    for item in news:
+    for item in sorted_news:
         headline = item.get('headline', '').strip()
         if headline and headline not in seen:
             seen.add(headline)

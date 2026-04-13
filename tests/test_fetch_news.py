@@ -51,3 +51,50 @@ def test_deduplicate_news():
     assert len(deduped) == 2
     headlines = [n['headline'] for n in deduped]
     assert headlines.count('Test') == 1  # 只保留一条
+
+def test_deduplicate_news_empty_headlines():
+    """测试去重处理空标题"""
+    from fetch_news import deduplicate_news
+
+    news = [
+        {'headline': '', 'id': 1},
+        {'headline': '  ', 'id': 2},  # 空格
+        {'headline': 'Valid News', 'id': 3}
+    ]
+
+    deduped = deduplicate_news(news)
+    assert len(deduped) == 1
+    assert deduped[0]['headline'] == 'Valid News'
+
+def test_save_news():
+    """测试保存新闻到文件"""
+    from fetch_news import save_news
+    import tempfile
+    import json
+
+    news = [
+        {'headline': 'Test News', 'datetime': 1234567890, 'source': 'Test'}
+    ]
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        # 修改 OUTPUT_DIR 指向临时目录
+        import fetch_news
+        original_dir = fetch_news.OUTPUT_DIR
+        fetch_news.OUTPUT_DIR = tmpdir
+
+        try:
+            filepath = save_news(news, date='2026-04-13')
+
+            # 验证文件已创建
+            assert os.path.exists(filepath)
+
+            # 验证文件内容
+            with open(filepath, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+
+            assert data['date'] == '2026-04-13'
+            assert data['total'] == 1
+            assert len(data['news']) == 1
+            assert data['news'][0]['headline'] == 'Test News'
+        finally:
+            fetch_news.OUTPUT_DIR = original_dir
