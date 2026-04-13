@@ -94,8 +94,8 @@ def fetch_sector_realtime() -> dict:
 
     for retry in range(MAX_RETRIES):
         try:
-            # 使用 ak.sw_index_spot 获取申万指数实时行情
-            df = ak.sw_index_spot()
+            # 使用 ak.index_realtime_sw 获取申万指数实时行情
+            df = ak.index_realtime_sw(symbol="一级行业")
             if df.empty:
                 print("  WARNING: 申万指数返回空数据")
                 continue
@@ -105,10 +105,15 @@ def fetch_sector_realtime() -> dict:
                 code = row.get('指数代码', '')
                 # 申万一级行业代码格式如 801010
                 if code in ALL_SECTOR_CODES:
+                    close_price = float(row.get('昨收盘', 0))
+                    current_price = float(row.get('最新价', 0))
+                    # 计算涨跌幅
+                    change_pct = round((current_price - close_price) / close_price * 100, 2) if close_price > 0 else 0.0
+
                     result[code] = {
                         "name": row.get('指数名称', ''),
-                        "price": float(row.get('最新价', 0)),
-                        "change_pct": float(row.get('涨跌幅', 0)),
+                        "price": current_price,
+                        "change_pct": change_pct,
                     }
 
             print(f"  获取到 {len(result)} 个行业数据")
@@ -141,8 +146,8 @@ def fetch_sector_history(code: str, period_days: int = 150) -> pd.Series:
 
     for retry in range(MAX_RETRIES):
         try:
-            # 使用 ak.sw_index_daily 获取申万指数历史数据
-            df = ak.sw_index_daily(symbol=code)
+            # 使用 ak.index_hist_sw 获取申万指数历史数据
+            df = ak.index_hist_sw(symbol=code, period="day")
             if df.empty:
                 return pd.Series()
 
