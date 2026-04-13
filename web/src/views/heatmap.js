@@ -6,6 +6,22 @@ import { renderBlock, findEtf } from '../components/heatmap-block.js';
 import { renderIndicators } from '../components/indicators.js';
 import { showDetail } from '../components/sector-detail.js';
 
+/**
+ * 格式化更新时间为北京时间 (YYYY-MM-DD HH:mm)
+ * 直接解析 ISO 字符串，不受浏览器时区影响
+ */
+function formatUpdateTime(isoString) {
+  if (!isoString) return '';
+  // ISO 格式: 2026-04-13T00:57:28+08:00
+  // 提取日期时间部分，忽略时区（后端已确保是北京时间）
+  const match = isoString.match(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):/);
+  if (match) {
+    const [, year, month, day, hours, minutes] = match;
+    return `${year}-${month}-${day} ${hours}:${minutes}`;
+  }
+  return isoString;
+}
+
 const INDICATORS = [
   { key: 'change_pct', label: '日涨跌', desc: '当日涨跌幅 (%)' },
   { key: 'rel_5', label: '5日强弱', desc: '近5日相对标普500的超额收益' },
@@ -43,10 +59,11 @@ export async function renderHeatmapView(container, header) {
   }
 
   // Header
+  const updateTime = formatUpdateTime(watchlistData.updated_at);
   header.innerHTML = `
     <h1 class="title">市场观察表</h1>
     <p class="slogan">Market Watchlist · 美股 ETF 相对强度热力图</p>
-    <p class="date">更新时间: ${watchlistData.updated_at || watchlistData.date}</p>
+    <p class="date">更新时间: ${updateTime || watchlistData.date}</p>
   `;
 
   // 免责声明 (顶部)
