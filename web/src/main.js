@@ -1,6 +1,7 @@
 /**
  * SPA 入口 — hash 路由 + Tab 导航 + 视图切换
  */
+console.log('[Main] App starting...');
 import { renderTabNav, setActiveTab } from './components/nav.js';
 import { renderRadarView } from './views/radar.js';
 import { renderHeatmapView } from './views/heatmap.js';

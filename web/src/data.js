@@ -2,7 +2,16 @@
  * 数据加载模块 — 统一管理热力图和雷达数据
  */
 
-const BASE_URL = import.meta.env.BASE_URL + 'data/';
+// 兼容 Vite 和直接浏览器访问
+let BASE_URL = '../data/';
+try {
+  if (import.meta && import.meta.env && import.meta.env.BASE_URL) {
+    BASE_URL = import.meta.env.BASE_URL + 'data/';
+  }
+} catch (e) {
+  // import.meta 不可用，使用默认相对路径
+}
+console.log('[Data] BASE_URL:', BASE_URL);
 
 /**
  * 获取最新数据文件，尝试最近 N 天
@@ -22,7 +31,8 @@ async function fetchLatest(dir, days = 7) {
       if (resp.ok) {
         return await resp.json();
       }
-    } catch {
+    } catch (e) {
+      console.warn(`Failed to fetch ${dir}/${date}.json:`, e);
       // continue
     }
   }
@@ -47,35 +57,52 @@ export function fetchRadarData() {
 }
 
 /** 获取A股市场观察数据 */
-export function fetchCNWatchlistData() {
-  return fetchLatest('cn_watchlist');
+export async function fetchCNWatchlistData() {
+  console.log('[Data] Fetching CN watchlist data...');
+  const data = await fetchLatest('cn_watchlist');
+  console.log('[Data] CN watchlist data:', data ? `${data.total_sectors} sectors` : 'null');
+  return data;
 }
 
 /** 获取交易信号数据 */
 export async function fetchSignals(filters = {}) {
-  const report = await fetchLatest('results');
-  if (!report || !report.signals) return [];
+  try {
+    const signalsData = await fetchLatest('signals');
+    if (!signalsData || !signalsData.signals) return { signals: [], metadata: null };
 
-  let signals = [...report.signals];
+    let signals = [...signalsData.signals];
 
-  // 应用过滤器
-  if (filters.direction && filters.direction !== 'all') {
-    signals = signals.filter(s => s.direction === filters.direction);
-  }
-  if (filters.confidence && filters.confidence !== 'all') {
-    signals = signals.filter(s => s.confidence === filters.confidence);
-  }
-  if (filters.type && filters.type !== 'all') {
-    signals = signals.filter(s => s.type === filters.type);
-  }
+    // 应用过滤器
+    if (filters.direction && filters.direction !== 'all') {
+      signals = signals.filter(s => s.direction === filters.direction || s.direction === filters.direction);
+    }
+    if (filters.confidence && filters.confidence !== 'all') {
+      signals = signals.filter(s => {
+        const level = s.level?.toLowerCase() || '';
+        const confidenceMap = { 'high': '高', 'medium': '中', 'low': '低' };
+        return level === confidenceMap[filters.confidence] || s.level === filters.confidence;
+      });
+    }
+    if (filters.type && filters.type !== 'all') {
+      signals = signals.filter(s => s.type === filters.type);
+    }
 
-  return signals;
+    return { signals, metadata: signalsData.metadata || null, generated_at: signalsData.generated_at || null };
+  } catch (error) {
+    console.error('获取信号数据失败:', error);
+    return { signals: [], metadata: null, generated_at: null };
+  }
 }
 
 /** 获取信号历史数据 */
 export async function fetchSignalHistory() {
-  const report = await fetchLatest('results');
-  return report?.signal_history || [];
+  try {
+    const signalsData = await fetchLatest('signals');
+    return signalsData?.signal_history || [];
+  } catch (error) {
+    console.error('获取信号历史失败:', error);
+    return [];
+  }
 }
 
 /** 获取新闻数据 */
@@ -83,7 +110,10 @@ export async function fetchNews(options = {}) {
   const report = await fetchLatest('results');
   if (!report || !report.news) return [];
 
-  let news = [...report.news];
+  // report.news 是对象，包含 news 数组
+  const newsData = report.news.news || [];
+
+  let news = [...newsData];
 
   // 应用分类过滤
   if (options.category && options.category !== 'all') {
@@ -94,9 +124,9 @@ export async function fetchNews(options = {}) {
   if (options.searchQuery) {
     const query = options.searchQuery.toLowerCase();
     news = news.filter(n =>
-      n.title?.toLowerCase().includes(query) ||
-      n.summary?.toLowerCase().includes(query) ||
-      n.sectors?.some(s => s.toLowerCase().includes(query))
+      (n.headline || n.title || '')?.toLowerCase().includes(query) ||
+      (n.summary || '')?.toLowerCase().includes(query) ||
+      n.related?.toLowerCase().includes(query)
     );
   }
 

@@ -12,15 +12,15 @@ export function renderIndicators(container, indicators, activeKey, onChange) {
 
   const tabsHtml = indicators.map(ind => {
     const isActive = ind.key === activeKey ? ' active' : '';
-    return `<button class="wl-tab${isActive}" data-key="${ind.key}">${ind.label}</button>`;
+    return `<button class="wl-indicator-btn${isActive}" data-key="${ind.key}">${ind.label}</button>`;
   }).join('');
 
   container.innerHTML = `
-    <div class="wl-tabs-row">${tabsHtml}</div>
+    <div class="wl-indicators-row">${tabsHtml}</div>
     <p class="wl-indicator-desc">${descText}</p>
   `;
 
-  container.querySelectorAll('.wl-tab').forEach(tab => {
+  container.querySelectorAll('.wl-indicator-btn').forEach(tab => {
     tab.addEventListener('click', () => {
       const key = tab.dataset.key;
       if (key === currentActive) return;

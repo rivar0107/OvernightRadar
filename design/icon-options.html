@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图标设计方案 - Overnight Radar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0F172A;
+      color: #F8FAFC;
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #F59E0B;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #94A3B8;
+      margin-bottom: 48px;
+    }
+
+    .section {
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #334155;
+    }
+
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .icon-card {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 24px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .icon-card:hover {
+      border-color: #F59E0B;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.2);
+    }
+
+    .icon-preview {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 32px;
+      background: #0F172A;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    .icon-preview svg {
+      width: 48px;
+      height: 48px;
+      stroke-width: 2;
+    }
+
+    .icon-name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #F8FAFC;
+    }
+
+    .icon-desc {
+      font-size: 13px;
+      color: #94A3B8;
+      line-height: 1.5;
+    }
+
+    .recommended {
+      border-color: #F59E0B;
+      position: relative;
+    }
+
+    .recommended::before {
+      content: '推荐';
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      background: #F59E0B;
+      color: #0F172A;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+    }
+
+    .comparison {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      padding: 24px;
+      background: #1E293B;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+
+    .old-icon, .new-icon {
+      flex: 1;
+      text-align: center;
+    }
+
+    .old-icon h3, .new-icon h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #94A3B8;
+    }
+
+    .old-icon .icon-preview {
+      opacity: 0.5;
+    }
+
+    .new-icon .icon-preview {
+      border: 2px solid #F59E0B;
+    }
+
+    @media (max-width: 768px) {
+      .icon-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .comparison {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 图标设计方案</h1>
+    <p class="subtitle">Overnight Radar v1.0 - 底部导航图标优化</p>
+
+    <!-- ─── 市场观察 ───────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">📊 市场观察图标</h2>
+
+      <div class="comparison">
+        <div class="old-icon">
+          <h3>当前图标</h3>
+          <div class="icon-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
+          </div>
+          <p style="font-size: 12px; color: #64748B; margin-top: 8px;">网格图标</p>
+        </div>
+        <div class="new-icon">
+          <h3>推荐图标</h3>
+          <div class="icon-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <path d="M3 14h7v7H3z"></path>
+            </svg>
+          </div>
+          <p style="font-size: 12px; color: #F59E0B; margin-top: 8px;">热力图方块</p>
+        </div>
+      </div>
+
+      <div class="icon-grid">
+        <div class="icon-card recommended">
+          <div class="icon-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <path d="M3 14h7v7H3z"></path>
+            </svg>
+          </div>
+          <div class="icon-name">热力图方块</div>
+          <div class="icon-desc">四个不同颜色深度的方块，直观表达热力图概念。符合产品核心功能——展示板块相对强度的热力图。</div>
+        </div>
+
+        <div class="icon-card">
+          <div class="icon-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="8" height="8" rx="1"></rect>
+              <rect x="13" y="3" width="8" height="8" rx="1"></rect>
+              <rect x="3" y="13" width="8" height="8" rx="1"></rect>
+              <rect x="13" y="13" width="8" height="8" rx="1"></rect>
+            </svg>
+          </div>
+          <div class="icon-name">数据网格</div>
+          <div class="icon-desc">2x2 网格布局，每个方块代表一个板块。简洁清晰，易于识别。</div>
+        </div>
+
+        <div class="icon-card">
+          <div class="icon-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 3v18h18"></path>
+              <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path>
+            </svg>
+          </div>
+          <div class="icon-name">趋势图表</div>
+          <div class="icon-desc">折线图 + 坐标轴，强调数据趋势和可视化。适合表达市场观察功能。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 隔夜雷达 ───────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">📡 隔夜雷达图标</h2>
+
+      <div class="comparison">
+        <div class="old-icon">
+          <h3>当前图标</h3>
+          <div class="icon-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+              <path d="M2 12h20"></path>
+            </svg>
+          </div>
+          <p style="font-size: 12px; color: #64748B; margin-top: 8px;">雷达扫描</p>
+        </div>
+        <div class="new-icon">
+          <h3>推荐图标</h3>
+          <div class="icon-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"></path>
+              <path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
+              <path d="M12 2v4"></path>
+              <path d="M12 18v4"></path>
+              <path d="M4.93 4.93l2.83 2.83"></path>
+              <path d="M16.24 16.24l2.83 2.83"></path>
+              <path d="M2 12h4"></path>
+              <path d="M18 12h4"></path>
+              <path d="M4.93 19.07l2.83-2.83"></path>
+              <path d="M16.24 7.76l2.83-2.83"></path>
+            </svg>
+          </div>
+          <p style="font-size: 12px; color: #8B5CF6; margin-top: 8px;">信号雷达</p>
+        </div>
+      </div>
+
+      <div class="icon-grid">
+        <div class="icon-card recommended">
+          <div class="icon-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"></path>
+              <path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
+              <path d="M12 2v4"></path>
+              <path d="M12 18v4"></path>
+              <path d="M4.93 4.93l2.83 2.83"></path>
+              <path d="M16.24 16.24l2.83 2.83"></path>
+              <path d="M2 12h4"></path>
+              <path d="M18 12h4"></path>
+              <path d="M4.93 19.07l2.83-2.83"></path>
+              <path d="M16.24 7.76l2.83-2.83"></path>
+            </svg>
+          </div>
+          <div class="icon-name">信号雷达</div>
+          <div class="icon-desc">雷达圆圈 + 中心点 + 扫描线，强调"信号检测"和"市场扫描"功能。动态感强，符合"雷达"概念。</div>
+        </div>
+
+        <div class="icon-card">
+          <div class="icon-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="6"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+              <path d="M12 2v2"></path>
+              <path d="M12 20v2"></path>
+              <path d="M2 12h2"></path>
+              <path d="M20 12h2"></path>
+            </svg>
+          </div>
+          <div class="icon-name">扫描雷达</div>
+          <div class="icon-desc">同心圆 + 十字线，经典的雷达扫描样式。简洁且识别度高。</div>
+        </div>
+
+        <div class="icon-card">
+          <div class="icon-preview">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12h20"></path>
+              <path d="M12 2v20"></path>
+              <circle cx="12" cy="12" r="3" fill="#8B5CF6" stroke="none"></circle>
+              <circle cx="12" cy="12" r="8"></circle>
+              <circle cx="12" cy="12" r="14" stroke-dasharray="4 4"></circle>
+            </svg>
+          </div>
+          <div class="icon-name">脉冲信号</div>
+          <div class="icon-desc">中心点 + 脉冲波纹，强调信号传播和趋势预警。现代感强。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 底部导航预览 ─────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">🧭 底部导航预览</h2>
+
+      <div style="background: #1E293B; padding: 20px; border-radius: 16px; border: 1px solid #334155;">
+        <nav style="display: flex; justify-content: center; gap: 60px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <path d="M3 14h7v7H3z"></path>
+            </svg>
+            <span style="font-size: 11px; color: #F59E0B; font-weight: 600;">市场观察</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"></path>
+              <path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
+              <path d="M12 2v4"></path>
+              <path d="M12 18v4"></path>
+              <path d="M4.93 4.93l2.83 2.83"></path>
+              <path d="M16.24 16.24l2.83 2.83"></path>
+            </svg>
+            <span style="font-size: 11px; color: #94A3B8; font-weight: 600;">隔夜雷达</span>
+          </div>
+        </nav>
+
+        <p style="text-align: center; font-size: 12px; color: #94A3B8; margin-top: 20px;">
+          ✨ 新图标效果预览（市场观察为激活状态，隔夜雷达为非激活状态）
+        </p>
+      </div>
+    </section>
+
+    <!-- ─── SVG 代码 ─────────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">📝 推荐图标的 SVG 代码</h2>
+
+      <div style="background: #0F172A; padding: 24px; border-radius: 12px; border: 1px solid #334155;">
+        <h3 style="color: #F59E0B; margin-bottom: 16px;">市场观察图标（热力图方块）</h3>
+        <pre style="color: #94A3B8; font-size: 13px; overflow-x: auto;"><code>&lt;svg class="tab-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;
+  &lt;rect x="3" y="3" width="7" height="7"&gt;&lt;/rect&gt;
+  &lt;rect x="14" y="3" width="7" height="7"&gt;&lt;/rect&gt;
+  &lt;rect x="14" y="14" width="7" height="7"&gt;&lt;/rect&gt;
+  &lt;path d="M3 14h7v7H3z"&gt;&lt;/path&gt;
+&lt;/svg&gt;</code></pre>
+
+        <h3 style="color: #8B5CF6; margin: 32px 0 16px;">隔夜雷达图标（信号雷达）</h3>
+        <pre style="color: #94A3B8; font-size: 13px; overflow-x: auto;"><code>&lt;svg class="tab-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;
+  &lt;path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"&gt;&lt;/path&gt;
+  &lt;path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"&gt;&lt;/path&gt;
+  &lt;path d="M12 2v4"&gt;&lt;/path&gt;
+  &lt;path d="M12 18v4"&gt;&lt;/path&gt;
+  &lt;path d="M4.93 4.93l2.83 2.83"&gt;&lt;/path&gt;
+  &lt;path d="M16.24 16.24l2.83 2.83"&gt;&lt;/path&gt;
+  &lt;path d="M2 12h4"&gt;&lt;/path&gt;
+  &lt;path d="M18 12h4"&gt;&lt;/path&gt;
+  &lt;path d="M4.93 19.07l2.83-2.83"&gt;&lt;/path&gt;
+  &lt;path d="M16.24 7.76l2.83-2.83"&gt;&lt;/path&gt;
+&lt;/svg&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ─── 设计说明 ───────────────────────────────── -->
+    <section class="section">
+      <h2 class="section-title">💡 设计说明</h2>
+
+      <div style="color: #94A3B8; line-height: 1.8;">
+        <p><strong style="color: #F59E0B;">市场观察图标设计思路：</strong></p>
+        <ul style="margin-left: 20px; margin-bottom: 20px;">
+          <li>采用 2x2 热力图方块布局，每个方块代表一个数据区块</li>
+          <li>四个方块可以象征不同的板块或数据维度</li>
+          <li>简洁的几何形状，符合现代扁平化设计趋势</li>
+          <li>使用金色（#F59E0B）作为激活状态色，与品牌色一致</li>
+        </ul>
+
+        <p><strong style="color: #8B5CF6;">隔夜雷达图标设计思路：</strong></p>
+        <ul style="margin-left: 20px; margin-bottom: 20px;">
+          <li>保留雷达圆圈的核心元素，但增加扫描线细节</li>
+          <li>中心点 + 同心圆 + 扫描线，强调"信号检测"功能</li>
+          <li>8条扫描线均匀分布，增强动态感和识别度</li>
+          <li>使用紫色（#8B5CF6）作为科技感和智能感的体现</li>
+        </ul>
+
+        <p><strong style="color: #F8FAFC;">色彩策略：</strong></p>
+        <ul style="margin-left: 20px;">
+          <li>激活状态：使用品牌色（金色 / 紫色）</li>
+          <li>非激活状态：使用灰色（#94A3B8）</li>
+          <li>悬停状态：亮度提升或轻微阴影</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ─── 页脚 ───────────────────────────────────── -->
+    <footer style="text-align: center; padding: 40px 20px; color: #94A3B8; font-size: 13px;">
+      <p>Overnight Radar v1.0 - 图标设计方案</p>
+      <p style="margin-top: 8px;">设计系统：Data-Dense Dashboard + Dark Theme</p>
+    </footer>
+  </div>
+</body>
+</html>

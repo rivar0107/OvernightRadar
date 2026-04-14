@@ -1,8 +1,8 @@
 """
-AI 客户端封装 - 支持 Claude/OpenAI
+AI 客户端封装 - 支持 Claude/OpenAI/DeepSeek
 
 核心功能：
-1. 统一的 AI 客户端接口，支持 Claude 和 OpenAI
+1. 统一的 AI 客户端接口，支持 Claude、OpenAI 和 DeepSeek
 2. 构建交易信号生成的 Prompt
 3. 调用 AI API 并解析 JSON 响应
 4. 错误处理和容错机制
@@ -23,6 +23,7 @@ class Provider(Enum):
     """AI 服务提供商"""
     CLAUDE = "claude"
     OPENAI = "openai"
+    DEEPSEEK = "deepseek"
 
 
 class AIClient:
@@ -33,7 +34,7 @@ class AIClient:
         初始化 AI 客户端
 
         Args:
-            provider: AI 服务提供商 (Provider.CLAUDE 或 Provider.OPENAI)
+            provider: AI 服务提供商 (Provider.CLAUDE、Provider.OPENAI 或 Provider.DEEPSEEK)
             api_key: API 密钥
             model: 模型名称（可选，使用默认值）
         """
@@ -52,6 +53,8 @@ class AIClient:
             return "claude-3-5-sonnet-20241022"
         elif self.provider == Provider.OPENAI:
             return "gpt-4o"
+        elif self.provider == Provider.DEEPSEEK:
+            return "deepseek-chat"
         return "unknown"
 
     def build_signal_prompt(self, news: List[Dict]) -> str:
@@ -118,6 +121,8 @@ class AIClient:
             return self._call_claude(prompt)
         elif self.provider == Provider.OPENAI:
             return self._call_openai(prompt)
+        elif self.provider == Provider.DEEPSEEK:
+            return self._call_deepseek(prompt)
         else:
             raise ValueError(f"Unsupported provider: {self.provider}")
 
@@ -192,6 +197,41 @@ class AIClient:
             print(f"ERROR: OpenAI API 调用失败 - {e}")
             return []
 
+    def _call_deepseek(self, prompt: str) -> List[Dict]:
+        """
+        调用 DeepSeek API（OpenAI 兼容格式）
+
+        API 文档: https://platform.deepseek.com/api-docs/
+
+        Args:
+            prompt: 完整的 Prompt 字符串
+
+        Returns:
+            解析后的信号列表，失败时返回空列表
+        """
+        url = "https://api.deepseek.com/v1/chat/completions"
+        headers = {
+            "authorization": f"Bearer {self.api_key}",
+            "content-type": "application/json"
+        }
+        data = {
+            "model": self.model,
+            "messages": [{"role": "user", "content": prompt}],
+            "temperature": 0.3
+        }
+
+        try:
+            resp = requests.post(url, headers=headers, json=data, timeout=30)
+            resp.raise_for_status()
+            result = resp.json()
+
+            # DeepSeek 响应格式与 OpenAI 相同
+            content = result.get("choices", [{}])[0].get("message", {}).get("content", "")
+            return self._parse_json_response(content)
+        except Exception as e:
+            print(f"ERROR: DeepSeek API 调用失败 - {e}")
+            return []
+
     def _parse_json_response(self, content: str) -> List[Dict]:
         """
         从 AI 响应中解析 JSON
@@ -244,6 +284,7 @@ def load_api_key() -> Tuple[Optional[Provider], str]:
     优先级：
     1. ANTHROPIC_API_KEY (Claude)
     2. OPENAI_API_KEY (OpenAI)
+    3. DEEPSEEK_API_KEY (DeepSeek)
 
     Returns:
         (Provider, api_key) 元组，如果没有可用的 key 则返回 (None, "")
@@ -257,5 +298,10 @@ def load_api_key() -> Tuple[Optional[Provider], str]:
     openai_key = os.environ.get("OPENAI_API_KEY", "").strip()
     if openai_key:
         return Provider.OPENAI, openai_key
+
+    # 最后使用 DeepSeek
+    deepseek_key = os.environ.get("DEEPSEEK_API_KEY", "").strip()
+    if deepseek_key:
+        return Provider.DEEPSEEK, deepseek_key
 
     return None, ""
