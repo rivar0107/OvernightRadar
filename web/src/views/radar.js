@@ -229,7 +229,6 @@ function renderSectorsView(report) {
   return `
     <div class="radar-content" id="sectors-content">
       ${disclaimerHtml}
-      ${renderSectorsSortSelector(sectorsState.sortBy)}
       <div class="sectors-list" id="sectors-list">
         ${displayedSectors.map(renderSectorCard).join('')}
       </div>

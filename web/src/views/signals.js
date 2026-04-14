@@ -297,7 +297,6 @@ function renderSignalsContent(container, generatedAt = null) {
 
   container.innerHTML = `
     <div class="signals-view">
-      ${renderSortSelector(signalsState.sortBy)}
       <div class="signals-list" id="signals-list">
         ${displayedSignals.map(signal => renderSignalCard(signal, generatedAt)).join('')}
       </div>
