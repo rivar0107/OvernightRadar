@@ -1,0 +1,60 @@
+{
+  "date": "2026-04-14",
+  "generated_at": "2026-04-14T15:28:49.720210",
+  "total": 2,
+  "metadata": {
+    "news_count": 30,
+    "raw_count": 4,
+    "processed_count": 4,
+    "final_count": 2,
+    "avg_score": 52.5,
+    "min_score": 50,
+    "ai_provider": "deepseek"
+  },
+  "signals": [
+    {
+      "title": "美联储或因油价压力推迟降息",
+      "direction": "利空",
+      "sectors": [
+        "科技成长股",
+        "房地产",
+        "公用事业"
+      ],
+      "action": "对利率敏感的高估值科技股（如ARKK成分股）保持谨慎，若纳斯达克指数（QQQ）反弹至超买区间（RSI>70）可考虑对冲或减仓。",
+      "reason": "新闻7显示，财长改口称美联储可等待降息，结合油价飙升带来的通胀压力，高利率维持更久的预期将利空对借贷成本敏感的成长股和利率敏感型板块。",
+      "is_macro": true,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 68,
+      "level": "中",
+      "score_detail": {
+        "importance": 25,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 18
+      }
+    },
+    {
+      "title": "伊朗冲突冲击全球供应链与中国出口",
+      "direction": "利空",
+      "sectors": [
+        "航运",
+        "航空",
+        "全球消费品"
+      ],
+      "action": "减仓或避开对中东航线依赖度高的航运股（如ZIM）及欧洲航空公司（DAL，AAL），若相关板块反弹至阻力位（如20日均线）是减仓机会。",
+      "reason": "新闻10、20指出，伊朗战争导致航空燃油供应受阻并抑制全球需求，中国出口已受冲击，利空全球贸易、航运及航空板块，供应链中断风险加剧。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": false,
+      "score": 50,
+      "level": "中",
+      "score_detail": {
+        "importance": 15,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 10
+      }
+    }
+  ]
+}
