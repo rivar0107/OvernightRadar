@@ -1,8 +1,173 @@
 {
   "date": "2026-04-14",
-  "fetched_at": "2026-04-14T15:36:51.142821",
+  "fetched_at": "2026-04-14T22:36:57.797067",
   "total": 30,
   "news": [
+    {
+      "category": "business",
+      "datetime": 1776200203,
+      "headline": "Wall Street rallies on renewed hopes for US-Iran talks, earnings boost - Reuters",
+      "id": 7794372,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Wall Street rallies on renewed hopes for US-Iran talks, earnings boost  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQWnl4MW04VzZlWE1mWVBMdFdCQWFwZjNoQmZuSU5lVkRIaWgyQ3czMFkzcEJlMmhEdVpkZmVwdll0MEl1VjA3emZoWkJyNlFZcl9UNlVpZTRsVWJSRXF0VTdDb2ZSbFFyWjJXMEFwN2wxa0h5Q05VRnFOVTVCQzA2ampLcWhZeEVLZVcwUXhJNTJPMU5xWjJUcEYybGFWS0ExMzgwWlo1azBEMzhFNG9Zc1FCMGxlRjQ?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776195260,
+      "headline": "Exclusive: US will not renew waiver on Iranian oil as it mounts pressure on Tehran, sources say - Reuters",
+      "id": 7794695,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Exclusive: US will not renew waiver on Iranian oil as it mounts pressure on Tehran, sources say  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOUWZpWDVqMEVHQ1QzTi1RS3l3YVk0MkUydTdOZ2MxSGVvekNuVG1Cd2xHM2lranBReWJreHFIWHgyLWYxSmQtdG1NbWQ5OWxzOElSeXY2RG5tUGh2UTV6aXhUSzMtNER6ejhEZjRLTy1DVkdreWFTZTRVci12RDlQZmYxdDdLSEx3dGQ3OS1pQW8xMzhpVmNCVnRIaFdQc3ZDX2hLQXFFMVRNUEZOOWdN?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776194721,
+      "headline": "IMF slashes growth forecast for Middle East as Gulf exporters reel from impact of war - Reuters",
+      "id": 7795225,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "IMF slashes growth forecast for Middle East as Gulf exporters reel from impact of war  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPYjRGcWpUQ3I4LThQYTkxR2FxanBacV9YOFd6ZHdjTmtpazltbDlCRlJBMUN4ZG9FaTB1cDk1aXB0d0E1WE1Bal91dDlOLUJMU0ttS1pZb0hxZTdNN0pNQ3FUT25qaHBncURVcHJOR1VRbzgwcFZKcVd2T1hWUW0tOVdDU1NGdjZFZWxrT0Z0NVU2VThVV0R6QUMySnItRUIxOXc1eGlzbUYyTUFzcTVzcy1SQXhwTW4zTmZDRDVXdw?oc=5"
+    },
+    {
+      "category": "top news",
+      "datetime": 1776193608,
+      "headline": "Stocks keep the rally going and oil tumbles. Here's why we have some trepidation",
+      "id": 7795007,
+      "image": "https://image.cnbcfm.com/api/v1/image/108278974-1773761711238-108278974-1773761649691-gettyimages-2266990062-l1070100_zkam1hu8.jpg?v=1776192505&w=1920&h=1080",
+      "related": "",
+      "source": "CNBC",
+      "summary": "Every weekday, the Investing Club releases the Homestretch; an actionable afternoon update just in time for the last hour of trading.",
+      "url": "https://www.cnbc.com/2026/04/14/stocks-keep-the-rally-going-and-oil-tumbles-heres-why-we-have-some-trepidation-.html"
+    },
+    {
+      "category": "business",
+      "datetime": 1776192012,
+      "headline": "US truckers' diesel spending hits record high on Middle East conflict - Reuters",
+      "id": 7794484,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "US truckers' diesel spending hits record high on Middle East conflict  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNNHRtMFJaV1FBbmEwZzYyV0VzVWg2d2VVbHZQUy1PVUk0Y1VrWmNyXy1Gb1B3bDVFZENhM2VuaHJNaE1JbHJMd1FQLWQxNGh5Wjc5U3JYRGpHVXY3Wlc3YUpSeDUzTzJNVG54VnhYOTFZWTJqNl9OTHpXV2tadWtBUVlMVEstY3dVcDZVUXRDU0RLQnVfOWdFS2pYZzVTMzVJZ180TTJFbmNZblNpTkFjWWRlT1M?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776188820,
+      "headline": "IMF cuts growth outlook, warns world already drifting toward more adverse scenario - Reuters",
+      "id": 7794052,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "IMF cuts growth outlook, warns world already drifting toward more adverse scenario  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOcmNiNzBrS0RzczdCcVIwbHZiUkpaZEZhM05IU2FFbWFjX21ZdlA1ampGV1lfM1lwX1l4SnM3dVY0VHBtLUdMY3ZneFpVVkVIbFNTVUllWHZUSDBKdUhpa1pWT3NVMGdSeFRaMFdENHlWc1prUFVma0JXZEhGSmtJaHl5MFRhX001QklYcEpxczltLUNfQXlETUdPNXNlTEhGTTVEand1WVg3QUF3R2Z3a2xMa1I5SXlIc1QwdmFB?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776188072,
+      "headline": "UN's Guterres says highly probable Iran talks will restart - Reuters",
+      "id": 7795223,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "UN's Guterres says highly probable Iran talks will restart  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxONkh1OGZreVBQdnF2LS1vdm50N0dDeF9XMW1vekNlcWk5MGs1VTdzdzFXUjBCZ01iYjU5dGhyZm1YNGs0QUtaYjlGU3VJaENhNU1DWU9jWUdDVXFvanFaVGZVU3dOZlJiNDNFNVBrd3p5V0ZxeUROUmFPbk1VeUZYQ3ZtWGdxYmlyODJReGVmekNxbENialVpS1hpUXRwcGhMZlVwY0d3SDc2VWlWRG5XUldB?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776187873,
+      "headline": "Six ships turned around as part of Strait of Hormuz blockade, US military says - Reuters",
+      "id": 7794586,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Six ships turned around as part of Strait of Hormuz blockade, US military says  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOdXR6TlRNWmdLV2c4bTZPVGZCcmcxNW8wR21CRGFtSEFFdGlrUlAyekQ2STdhUjh0YkdUa2htUV80bXE2RDk0b2ROU3ZFU1RVMVM1eGc3U21Ob2Z2RkptX3ZYTTljekF0aE56SGtvTk5QMFV6TEZRMXg2RldvQ2dpVVEwd2plRk1fVGp6QXFWVm9pOTB1U0U3OXJrTnlkdXJrUzJObGZGXzJtYTNXVXA4MXNNWEU5Zi1RTGpxSEtzRQ?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776186232,
+      "headline": "Iran war allows Australia to revive green iron ambitions - Reuters",
+      "id": 7792831,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Iran war allows Australia to revive green iron ambitions  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQaGtEcG9oTzBTQkQ2S3ZyN0Q4dFE5dm1SYWdabEdHRGgteHpoRC1uS2ZHLXBSSF9qX3Ayd0pJNTNnYTJGYV9JMjhmWE5yNTJLRHJGa2dfeVhUU2NnYm9Fd01XUUtKOTI4M0ZRWFhjOER1LThvSGtwVjFPblNQWnd1eW9pQXdOdW04UUJFbEFmbnpwWEZoOS1fZWliclRnTlB0Nk14ZWtidllLUC13bnc?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776186070,
+      "headline": "UK hit with big IMF growth downgrade as Iran war fuels inflation - Reuters",
+      "id": 7794163,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "UK hit with big IMF growth downgrade as Iran war fuels inflation  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNUk9hTGpCa05VR0d1OWtDWnZQSjgtV0FDdmR6VTBRc1NiUHZab1BfNG9aQzRDS1F1Y2FZMFFKbnFfblRRTFpETnY4a0kxS1BzVXdyS3dOZDhwUEdDYnpCa0xocTd5OUpEYjRIM09xYlhMOG9NU0tPWklfVnU4NHdQMjR5WTA1MGtsZFowZ2R5X3dpRTU1VEJDUmpJSUtDY21QNjdWbUl4a3dhUQ?oc=5"
+    },
+    {
+      "category": "top news",
+      "datetime": 1776185221,
+      "headline": "We're making a disciplined sale as the market becomes increasingly overbought",
+      "id": 7794581,
+      "image": "https://image.cnbcfm.com/api/v1/image/108103723-1739902147549-JP3_8707.jpg?v=1744141211&w=1920&h=1080",
+      "related": "",
+      "source": "CNBC",
+      "summary": "We bought shares of this stock twice into the March sell-off. Now it's time for us to trim it.",
+      "url": "https://www.cnbc.com/2026/04/14/were-making-a-disciplined-sale-as-the-market-becomes-increasingly-overbought.html"
+    },
+    {
+      "category": "top news",
+      "datetime": 1776184303,
+      "headline": "Jim Cramer wants to trim this Mag 7 position and says hold on to another one",
+      "id": 7794369,
+      "image": "https://image.cnbcfm.com/api/v1/image/108288920-1775679881284-gettyimages-2269830686-AFP_A77J38N.jpeg?v=1776167341&w=1920&h=1080",
+      "related": "",
+      "source": "CNBC",
+      "summary": "The Investing Club holds its \"Morning Meeting\" every weekday at 10:20 a.m. ET.",
+      "url": "https://www.cnbc.com/2026/04/14/cramer-wants-to-trim-this-mag-7-position-and-says-hold-on-to-another-one.html"
+    },
+    {
+      "category": "business",
+      "datetime": 1776183944,
+      "headline": "Fertiliser shortages due to Iran war are a key worry for developing world, UN agency says - Reuters",
+      "id": 7795224,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Fertiliser shortages due to Iran war are a key worry for developing world, UN agency says  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNdEtTakxtZGl1by0tX3JuSk5sLXNNVXJEdVRIXzJHb1BndmJsNy1rWl9YVlhqdU5tT1RnbzdsTjdWS3BqRUJ0dVJZRUVabDJtbjRJOUpGT1EtRHEzMGEtUkdsZXRCbExsTkZ3NWo3WXM4N1l3eWk2V0YyakFnZm5CbVJrYmpndGF6X1dQU3VXWnNyUncySEJJUjZHZEpSUWhhdUZXNkxBb3BHeTE5VFFwSFg0QVJIdGJaeWRJRkdR?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776182980,
+      "headline": "What a United-American merger would mean, from antitrust hurdles to airfare",
+      "id": 7794263,
+      "image": "https://image.cnbcfm.com/api/v1/image/107178014-1673548153190-gettyimages-1246182579-NEWARK_TERMINAL_A.jpeg?v=1673548206&w=1920&h=1080",
+      "related": "",
+      "source": "CNBC",
+      "summary": "United Airlines CEO Scott Kirby reportedly floated a potential merger with Trump administration officials earlier this year.",
+      "url": "https://www.cnbc.com/2026/04/14/united-airlines-american-airlines-merger-report.html"
+    },
+    {
+      "category": "business",
+      "datetime": 1776181423,
+      "headline": "Trump says Iran talks could resume over next two days, NY Post reports - Reuters",
+      "id": 7794373,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Trump says Iran talks could resume over next two days, NY Post reports  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPVFNtNlYzaGpvRnRXd2t3OU9vOXBZZWhSYm5DRmhKOFpaMF9aaXVvbUhCUm9mTXF6SnVSODhMNjc5Ujhwc1A0Zllrd1Z6aFFkd0xSc0t3OU45ak5XUG1VSHkwcXJNby1PSjc5aXFtWnJrQjFyRVlvZWJJN2sxLURVVDB5UlBEM3dVQnY4a2RwZ2k2VnFXU25oM3loTjhqU2tiakRjUV9JZGVINmhLM1VMNkE3a1BjVmJMWW9TTFk4M3k?oc=5"
+    },
     {
       "category": "business",
       "datetime": 1776178339,
@@ -15,28 +180,6 @@
       "url": "https://www.cnbc.com/2026/04/14/blackstone-exec-joan-solotar-private-credit-signal-noise.html"
     },
     {
-      "category": "business",
-      "datetime": 1776177687,
-      "headline": "US, Iran may resume talks this week despite port blockade - Reuters",
-      "id": 7791789,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "US, Iran may resume talks this week despite port blockade  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOOXA0bTBHblBiMUJyaU1FdmxCWVZuc0hwWUk0MzdEQklTWC04MXFSZlE3U2RGRzRORVpaNEIzLUVERkRVUVpTRUZCNUlXUlltXzZYUFRHNDF2MS1Xd005RXhjd2IwLVBySWM1eThBTVl6blJoWHJ6SXFqcl9WeGZBYTdRSUFVOE9NTF9nTmp6dFVXYldkQl9uQXQ0OTktNkIwMWdyUFk4cjdEVmUyX0VrQzhCejQ?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776175544,
-      "headline": "IMF cuts growth outlook, warns of potential global recession if Iran war worsens - Reuters",
-      "id": 7794052,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "IMF cuts growth outlook, warns of potential global recession if Iran war worsens  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOcmNiNzBrS0RzczdCcVIwbHZiUkpaZEZhM05IU2FFbWFjX21ZdlA1ampGV1lfM1lwX1l4SnM3dVY0VHBtLUdMY3ZneFpVVkVIbFNTVUllWHZUSDBKdUhpa1pWT3NVMGdSeFRaMFdENHlWc1prUFVma0JXZEhGSmtJaHl5MFRhX001QklYcEpxczltLUNfQXlETUdPNXNlTEhGTTVEand1WVg3QUF3R2Z3a2xMa1I5SXlIc1QwdmFB?oc=5"
-    },
-    {
       "category": "top news",
       "datetime": 1776175317,
       "headline": "Trump says gas prices 'could be the same' or 'a little bit higher' by the midterms",
@@ -46,6 +189,17 @@
       "source": "CNBC",
       "summary": "The U.S. began blocking ships through the Strait of Hormuz on Monday, sending oil prices surging after peace talks failed over the weekend.",
       "url": "https://www.cnbc.com/2026/04/14/trump-gas-prices-midterms-iran-war.html"
+    },
+    {
+      "category": "business",
+      "datetime": 1776174658,
+      "headline": "Euro zone faces big growth hit even if Iran war quickly resolved, IMF says - Reuters",
+      "id": 7794483,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Euro zone faces big growth hit even if Iran war quickly resolved, IMF says  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQZzNqMUMwb3M0dUgwOFB0SHVOeWtBaWctaEVzMHdRODI4UzRGZElUX18wNjQ3SHFGd01udXFrd19YRG9Qc0RFNGxLUkwwT19sVkJYQkJFYWZKeU1rUEcxaXZIX3dTOUpJSnZRamJrbjgwTTgxUTVibTRFb2xkeHRnc3R2M1RpSnVKN0hxc1ZqNmRYRzM4WEVaTUtzVWRwRXlvVE1Ld2hGa2xzMXlvMVVLWFVYSjJOSlJWUkE?oc=5"
     },
     {
       "category": "business",
@@ -103,6 +257,17 @@
       "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOQXM5Q1RVNkFkMGRfUDZtODlwWXU0dGJGWFc3d2RaYVpLNHl1bHZuM01kcFpxUmdZOFRHa19zNUFwTHdRZ1EzbXJYMjhFUDlPOUVJUXBYZVlHdW84WGpjSXI3Q3BvQ0JxYmMxdmE2VV9xNTdCU09oOFFUVk4yVzJ1NC1MUmQ0WkhIRmZ0ZDQ4cGtfdGxLWnNZREE0eEsxUkk?oc=5"
     },
     {
+      "category": "business",
+      "datetime": 1776169605,
+      "headline": "Aid groups use land routes to deliver humanitarian relief to Iran - Reuters",
+      "id": 7794374,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Aid groups use land routes to deliver humanitarian relief to Iran  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQbGNXbHN0Yzh5bUhDMnZneDM5cUNpR0ljcVRreGlXcFRiZGw2SkE5Zmp6bHhzSVg4T2NyTlh4dl8xMlFlY09TVkh6RmotcTJPUW5VRjVrVmlTZ2pic2Q1VVZwZU5hRGczOG1rRkVWUzdFS1ZpcHNwZW0weU93REM5cnNhS0lDc0NpeUQ2MC1XVzliZm5HM0hyTFFfOUtYTkxtbHAtOGVhdFV1ZHFGUmMxWmtfSQ?oc=5"
+    },
+    {
       "category": "top news",
       "datetime": 1776168061,
       "headline": "The top 10 large U.S. cities for recent college graduates in 2026, according to new report—3 are in Texas",
@@ -112,6 +277,28 @@
       "source": "CNBC",
       "summary": "New York City and LA didn't make the list, published by Glassdoor and Redfin on April 14.",
       "url": "https://www.cnbc.com/2026/04/14/top-large-us-cities-for-recent-college-grads-in-2026.html"
+    },
+    {
+      "category": "business",
+      "datetime": 1776165463,
+      "headline": "Iran war could hit India's car production, auto body says - Reuters",
+      "id": 7794587,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Iran war could hit India's car production, auto body says  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOelJGMXA5c1FqeFFvVU5DajFCNldZRFVlTGxRQnlUOTFodjFUYzRIZWdxblhUQTU4dkxJU0tNV1IxZWc0aFBFbnVaeWJ5OVZnZ3d4Y29mOHdKVkZWMUFoMUVMQ29tZWt1YXdRU2tlMWg3TWkyRTlyM1l2LWxXUzVBOWtCbE1hMUVpaTMtNDZHT1dlMkNXY1VYeEV6TzJ4U19MNERyVkl3?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776163860,
+      "headline": "No discussions between Qatar and Iran over payment of funds to stop Iranian attacks, Qatari official says - Reuters",
+      "id": 7794482,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "No discussions between Qatar and Iran over payment of funds to stop Iranian attacks, Qatari official says  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNQUhIZlFpdjlxTUZyZV9nQ1N6ZzlRZW1MUkloc2hQVFpWMVVoRUJUbVBaeVdfeUZLck1DWWhyVHFfcTNGWm1ETzJscTE2RmRGWW0ya1JKbFJwZ3BvcnIweUxkMlVZSEk0ejZGS1RoTTlZMGMxZ05FYW5wQ2NjdldfMnI2SlUyUHpMV3VIUTdGWFl5YmpsOFhzeXdHTHdWRFZfTGU1OEZoaGp4X2lJYXJGUXFUN2VhVWNGZkVmdHE0cUhCeHhaOXlpWEpPQ0IyLVU?oc=5"
     },
     {
       "category": "business",
@@ -125,6 +312,17 @@
       "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNcnBlNkdSNVBueHBkVGFmXzUzcEpydmZpLTNZLXVnc0ZiN3hhVGRyNjZkYjZpUWZYWllLMTZoakZILUNWX0tRak1EMmZ1aWQwT2JxQmtmRmUyZFpxRE5oMVBhS2RhWlhCaDBkeUxWTjNTc1lYeFNrUlY0eEhiSzhIQmZVMFZFMUZQVVJNeWFjWjVuNUV2ZEtjaHNJYmZTanJfQXRxd3RyYUhlX0U?oc=5"
     },
     {
+      "category": "business",
+      "datetime": 1776161453,
+      "headline": "Oil tankers transiting Strait of Hormuz since start of Iran war - Reuters",
+      "id": 7794481,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Oil tankers transiting Strait of Hormuz since start of Iran war  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQY0dPT3VUYnduOWZFZ05qSjU2dV9zdkhWdzh6OVJxdldxbXRiVjQ4T3RWaEFna1g2dWVoWXZCazZudDVwU2VqWk1YZGVYOHAxSGo5OFAxQld4MzRNYmRUd0NGSHZFLUd3d0FiYmNZTFk1RnhtZ3Zqa3dLemc4UGEzR2NfaFl4R1hEckhPcFhnT0ZuYUFKY1NfWmFkeHhnb3NvWGxZX1luR3c2M1FHbHc?oc=5"
+    },
+    {
       "category": "top news",
       "datetime": 1776160581,
       "headline": "U.S. Hormuz blockade hits India just as Russian oil purchase waiver expires, deepening energy worries",
@@ -134,204 +332,6 @@
       "source": "CNBC",
       "summary": "U.S. moves to blockade Iran, and let a Russian oil waiver lapse, squeeze India’s energy supplies, exposing its vulnerability under rising U.S. pressure.",
       "url": "https://www.cnbc.com/2026/04/14/us-hormuz-blockade-hits-india-just-as-russian-oil-purchase-waiver-expires-deepening-energy-worries.html"
-    },
-    {
-      "category": "business",
-      "datetime": 1776160566,
-      "headline": "China's export engine stutters as Iran war chills global demand - Reuters",
-      "id": 7792209,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "China's export engine stutters as Iran war chills global demand  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNLXhzMWhMLWxBWlF0NWZkb0RLQ3gtNXVYZmRVRng0MUw2clZ6dGVFbFdpeHR2UllHYmRmUHBWT29fNjA3aEQ2bDRzLUN6WGJTM19FVjdRMjQ3VGlLbjZKOEpLV1pRQmpJWnZ3ODRETWRvN2dqcHNYM1lCVUl4TVBEZ2t1SFAwbTd4RXVNVnZrOE9ZVnF4a0J3bnloNWJseGhWTGFJWEJtMnRGbmhX?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776159138,
-      "headline": "US, Iranian teams could return to Islamabad for peace talks this week, multiple sources say - Reuters",
-      "id": 7792414,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "US, Iranian teams could return to Islamabad for peace talks this week, multiple sources say  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPcjRaRFZqelZraU9jYUs3UExseGJhLVpLLTQ3NzBMMGNDWnUyYTV1ODg0Uy1IWFZTRFFxeGw5WFoyNXpVNUExVXFLUDlRa2huYlpoQ1gzMzE5QmRwLU9QNWh4V2pfS09lcEdIcVNKYnRldWc2MmVNM1lzM2pCRkIxWkNWZVpJWXhKRUZRVjNFUmEwdjRMOVQwM0Y3UGxJSm5jeGRoTjc3Z3N6bmxqMGpkZXRzUUFVWTdPVFUyOUxQenFZdkFqTHVURjRQUVZfdw?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776158640,
-      "headline": "UK's Reeves 'frustrated and angry' over US Iran war strategy, Mirror reports - Reuters",
-      "id": 7793494,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "UK's Reeves 'frustrated and angry' over US Iran war strategy, Mirror reports  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQTzhvekFDdEVRZk5VQkEzWlVNYm4wanFOckR0aXNBbDRaU0FyQTc2ajk0Q2ZLRF9fMm9Ja0ZXV0xkR2FuWHA1d1Bya3Y5SU1JVmZxemZsYXo2XzYzM0szS3JDaG5kRTQ1RXo1Z2w4WWdyMkF4MDJERmViRUNvQzdGNkhXc25oaFBXLUNqNE9MVFpTRjJlNWtBdnZDODNWVl9rV0NsNUNfV0gyOEVCWGZteDgyX3YwMHl4NTExQUtBUQ?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776152999,
-      "headline": "Russian Foreign Minister Lavrov arrives in China for talks on Iran and Ukraine - Reuters",
-      "id": 7792623,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "Russian Foreign Minister Lavrov arrives in China for talks on Iran and Ukraine  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPLV9tZ0xheUJvVWpxQlFfYmRSdXhZUjJMendRX3dyVWxzeEJReGRDTFJ3WEJnQjBjY1o0U2FZYWRoM0NmMGRsakduZE5yV3RaVEhyNTJzX2podjNEVVAyTWt0UFpRMFFscXl1ZWRjZXhCR0lYRlZudC00N1hnOHhhMDJPcWNTcWlnSlVpQnlzeU5VZXpNY2gwUXlNSXIxTzhkckFjaEVvenp3aTBjaDZpZkxB?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776147600,
-      "headline": "Iran to allocate part of oil revenues for reconstruction after attacks, minister says - Reuters",
-      "id": 7792724,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "Iran to allocate part of oil revenues for reconstruction after attacks, minister says  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQZ1F2dEFkVEVYYXJLcXVrZGZRalV4U0g1cm5RanRYbDRETUw4MzNyYzhEX19paUJlbUQ4MUV6ZVBYX2NqRXh5ZTBWY1lfNFhXYWVhLS1VdGlCVG5CaFlIcF9zRWVxWHVmX1duNmFwVm14TEI2M1kxNVpZLWZWbzlwYTZUZUdCVXFPMTZKdzAtbF9QcmhQOVM4M3p3S3EtcHdDWHJCTVNDb1I2WHlVRTZwZnJoZ2tDMHR5UW9pNDRHc1hzS29w?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776147240,
-      "headline": "How China is plugging energy supply gaps left by US-Iran conflict - Reuters",
-      "id": 7792415,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "How China is plugging energy supply gaps left by US-Iran conflict  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNby1sSWpyZmtybGMyOVRha19wNEJVUTMtNHFrVHRQbzJVcWVBUVhoaHUzNnozMlRibk1MMGg5TGRTYnpRcXZKcUp2c25TZE9Rb1VtMWVYMlRmTGw5dE9GSzlqU0M0T3c1T3I4c21fMHhjd3NlaWRsYXkwZGtnazBEX0NRdGFZNjNGWV9rN0pjS2dVdk9qamhOWG0yUmZSQkhzVlFaRjNXdk5VMFZrMTAtNHlmSUdfVWFlX3RXeWVB?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776145140,
-      "headline": "China's March crude oil imports unscathed by Iran war, gas imports hit a multi-year low - Reuters",
-      "id": 7793373,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "China's March crude oil imports unscathed by Iran war, gas imports hit a multi-year low  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNOU9FVzZzellWeE5pT3hNTjVDS1ZQc1VYd0xHa0gtZWZiSEZiMEdlLWNqbEIweWpfbkIzWWJHWVh1c244SXFsY1dKc3RJVHFtRFdfdERHV3ZWQUgxRFQxRWFJTjMyYS1lX2pkcE9PQktac2k2Mkd2YmNQYWgyMm14aW1HUnBocEh0Q2dBbGF0M2twLVlrcW82VDhtQnRCWEdsNUI5TzRsU2NhUWw3ZUg3enNtMUkzbmVtZ3d0eUF2eDFnMURtSURiQ1N5OA?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776138900,
-      "headline": "China's Xi says rule of law must be upheld for Middle East peace - Reuters",
-      "id": 7792625,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "China's Xi says rule of law must be upheld for Middle East peace  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPRy11cG1HZVBwZzJfUEpLR1lKdkhLVkt1aVAzaWxQR0dlVHE3cFdsazdKUUVPZ1U5WXR2a1VpOXVta1laWTRROFp1VE9YVXBISlYyd05QdTRSNzVIRjlrTGlWMElGNnlGODB4STZoYjhLdVI0eWRvcVNFZHlZaTdBZ3ZEbnBhOVFKa1hNQXhfWHFSS1hwSkZFblNLT1lsMW12Ry1OT254dw?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776138120,
-      "headline": "Tankers pass Strait of Hormuz on first day of US blockade, data shows - Reuters",
-      "id": 7791892,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "Tankers pass Strait of Hormuz on first day of US blockade, data shows  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNa0ZDQ3dmc1dUeUd5WHByYUpEemJmM1NsVy14TW1xNl81ekItMjQ2VEJrUnJUUE1OaXpCdHItSWlrTmlWOTRlWFN3c2oxb3lJc2ozTkNRc0ZidVEtZ0RqUFFhRVg3bzVjSTNuYk9ZX1dJb3NpMW1jV25KRXFfTXExbXN6OXdidzVUTVlhSFB6RTczcmtlM3VCZlp4RU1wZi11MlBZN295bzFVTG8xcFFIb0o0X3JBMDFpaXhmdGFWbXF0d1pmYTYxZElSQTg?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776133080,
-      "headline": "South Korea's Lee warns Iran war to keep oil price high, orders quick aid rollout - Reuters",
-      "id": 7792105,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "South Korea's Lee warns Iran war to keep oil price high, orders quick aid rollout  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNMWN6OG43dndENDM2ZktFVklycDNuLWx3NE55Tl93U29jSjNZVTdkcG5pQjlhT2ZHc2U1c0N4dWpHSFMwMXVTelFwYm9VODVKTHFHUUhOMVdVaE5qOHE2QXNtWTlHcDBYMkpqU1M0bzlTa1VDMGNWVHZQNzEyektpZ1FWeTROdzRpM3NkeXJwby1idndjNnVDWHBJNGpnNVZCa01Ua3FyMWpQWnBheVdPWFdtSzV4NWhVNzdqTUN4VG9yMjdsTFFwZzlHQmJhTmtn?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776130560,
-      "headline": "Stocks rise, dollar nears pre-war levels on hopes of US-Iran resolution - Reuters",
-      "id": 7791484,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "Stocks rise, dollar nears pre-war levels on hopes of US-Iran resolution  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOWmhRTmVMQUVCRTFCTjNOZ25hYVZuN1NiNTc4SVpxQ001VGR4ZFM0TzJqUHQ4S0E0ZXg4YVBZeGE3c2FZTnkxU2JHeXFBOWpRU2RRdzdRUFZQTnhjTFlOTE5FRVdwc3FidUo3RDR4MHRCV25Od1Y3ekRDa2hWYVlKcHEyaw?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776130320,
-      "headline": "Australian business, consumer confidence crashes on worries about fallout from Iran war - Reuters",
-      "id": 7791999,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "Australian business, consumer confidence crashes on worries about fallout from Iran war  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPZ2l0TkpoSkZ1bGlBaWxGakh6NFZiSW1OMy1SU0FCYTZlNTlaalB1RERUX2xINHBCTW1QT2JOdjdBOEgycDRSYk9tYTFKODFrMDdhZmxXNU40elZSNllOQ0prel9RUkR5UWY1NkVrTll3Tk5DREYxU3hBTVRIaUozR2FMTXRSQXFrU0pIVi1yZW13aWZLZG5LQ3RBdldEWHRJTmk0OS1ycW5KcjQ3NHhFMENmQUxaTmlKT21McXFBbnRqNEotZ1ZqQQ?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776128052,
-      "headline": "Iran war allows Australia to revive green iron ambitions - Reuters",
-      "id": 7792831,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "Iran war allows Australia to revive green iron ambitions  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQaGtEcG9oTzBTQkQ2S3ZyN0Q4dFE5dm1SYWdabEdHRGgteHpoRC1uS2ZHLXBSSF9qX3Ayd0pJNTNnYTJGYV9JMjhmWE5yNTJLRHJGa2dfeVhUU2NnYm9Fd01XUUtKOTI4M0ZRWFhjOER1LThvSGtwVjFPblNQWnd1eW9pQXdOdW04UUJFbEFmbnpwWEZoOS1fZWliclRnTlB0Nk14ZWtidllLUC13bnc?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776127920,
-      "headline": "Dollar falls as traders hope for Mideast conflict resolution - Reuters",
-      "id": 7791177,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "Dollar falls as traders hope for Mideast conflict resolution  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPOHRVTkxBaVhqdlNsU0RlMlc4aTFqdUdlMlZWVlBteF8yeUtJSGJIM2hFV3F0SzVtYzNUMWVMWllnQ2tkdWJXb08zYklfRWU4QnY3UzdOUmJjRUpzOXFUSlVrY0VnX0tyQ19kZU9tRHJwWEZTY2F6bmpnS1RkZGtLcTIxR0JMNzQ1VUNzaFNIckluYnYzNlJHWkFUNDZ5aXk5emc?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776126000,
-      "headline": "Singapore tightens monetary policy as Iran war fuels inflation risks - Reuters",
-      "id": 7791790,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "Singapore tightens monetary policy as Iran war fuels inflation risks  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQb0V3Tmc1RjNXTFRLYUxkSVZ6WFNCdGdWX1R3Zm9pNGVPVHJuRjFqZEhjWExGLUhNbXl0NEhVUGJ1T3YyQWtLUldfOFNIdS1VTUE2RklJakFSNlpYT1hNMnJEaVExWVktTFJ4aTI2TEs5ZGZGWmNOQ0FVaHdXRjJBeWVuZWZxNUx6SmRyZHFnb1NNUWZwRVVWR1d0cS1OWjlSWlpIYmNDLU9BMS1aT3V5aw?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776122460,
-      "headline": "Jet fuel shock from Iran war worsens crisis for global airlines - Reuters",
-      "id": 7793495,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "Jet fuel shock from Iran war worsens crisis for global airlines  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNbzBVZ1d6c1RuREw1Mk12djJnTXBCYmE1WEhjaTFkNW5rNEdncFdVRDdfZDVmYWk0Z05aYlhIS05IZUg4b24wM21aNGVPRmJtWXNJaWZLd0E4eHN6R3dTN3BSRmwtX0ZyOGk0eHdXZEZ6SEctbFptYlB2eFZjMkd2RTRaNFR2NHBUVUZGLUNHVnNPSUZnaXFaUkV3djlQT21zM2dMdTBDV0VXcFBWVVQzVTBOamVoVmJNeWx5bQ?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776121467,
-      "headline": "Britain will have enough energy this summer despite Iran turmoil, grid operators say - Reuters",
-      "id": 7793374,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "Britain will have enough energy this summer despite Iran turmoil, grid operators say  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPQkMxTDJ3T1VGUWc4V3ExUU5GT2dvZXhVbXBsVndTYzlidHVkXzFZbFJuM2RLSHotWWZ0eUlyMklEYmdOM0Q4SHgwWk9IZXdNYl9YV0ZkTjAtZlpqeFk5SnptMmNBNHVXRVpsTW1jYmhDMU5MeXNveUNDVHdoWTIyRzF2Y0dmeXRHUUs5a0NoN0NGMy1ubWlBR1FDaENlNnVPMUNvY2lmSWpMOWhIMGZnQTRzeUJYakptaU5HUTh4U3BjcThiVjhOYi16VjVtTWNLcEdna1FlaE5fdTZ0Z3FFYWlRR0dYQ0ctQlg0?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776120354,
-      "headline": "Wall Street indexes gain as investors hold out hope for US-Iran resolution - Reuters",
-      "id": 7787987,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "Wall Street indexes gain as investors hold out hope for US-Iran resolution  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPNnlHODRfWHZBSmRTd0hYTjBoVndLOTk4dm8tS1Q5WmVlQVZ5NEtoYU9wUFZKdXdMOXlYc0d4RU5jMEFyTUthSTZaMTlGMEJEaHdtNWh1YndGQnlRWjhQMnJzVmZFNTFhZ2FQX3JESzhxc1NaMXRiclVmNHlaZkIwT3dhWTJ6eFgtZ3ZQVDBZV2FoQ3RPWlRCbm5ZSDNSX2tqV0NjWE9EM0JLaENHRTNj?oc=5"
     }
   ]
 }
