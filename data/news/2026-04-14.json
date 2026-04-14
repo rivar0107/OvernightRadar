@@ -1,11 +1,33 @@
 {
   "date": "2026-04-14",
-  "fetched_at": "2026-04-14T22:36:57.797067",
+  "fetched_at": "2026-04-14T23:49:21.780566",
   "total": 30,
   "news": [
     {
       "category": "business",
-      "datetime": 1776200203,
+      "datetime": 1776207694,
+      "headline": "Airlines cancel flights amid Middle East conflict - Reuters",
+      "id": 7795743,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Airlines cancel flights amid Middle East conflict  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOdXZTZ3g4b1NGZkU4dmZUcDJoQ0N2YURqQ3pUNHhXeVQ2UmxlU3hLUTR1Z3lmdzUtc2NKWkVFNlIxSEJqUVZGX0tRZ25WNTVnYU9XUzAwUVJ1WlBfZllqaTczZXBWS3ZINHNwNUhBSWszYlJxT3Vkc2puTFZCOTJXY0NfU2luMEx5Qnpzdm9RTi1vRnEzQkYxQ2J3UlRqT0VHZHBBN3NLT3ZGWUg2UmN6ZkN2OUxrZw?oc=5"
+    },
+    {
+      "category": "top news",
+      "datetime": 1776207038,
+      "headline": "Cramer: The market's biggest fears 'just didn't happen' – and that's why you can't leave the game",
+      "id": 7795740,
+      "image": "https://image.cnbcfm.com/api/v1/image/107109966-NUP_198430_00164r.jpg?v=1695081285&w=1920&h=1080",
+      "related": "",
+      "source": "CNBC",
+      "summary": "CNBC's Jim Cramer explained why bailing on stocks when things look bleak ends up hurting you in the long run.",
+      "url": "https://www.cnbc.com/2026/04/14/jim-cramer-says-the-market-rally-shows-why-you-cant-bail-on-stocks.html"
+    },
+    {
+      "category": "business",
+      "datetime": 1776205386,
       "headline": "Wall Street rallies on renewed hopes for US-Iran talks, earnings boost - Reuters",
       "id": 7794372,
       "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
@@ -13,6 +35,28 @@
       "source": "Reuters",
       "summary": "Wall Street rallies on renewed hopes for US-Iran talks, earnings boost  Reuters",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQWnl4MW04VzZlWE1mWVBMdFdCQWFwZjNoQmZuSU5lVkRIaWgyQ3czMFkzcEJlMmhEdVpkZmVwdll0MEl1VjA3emZoWkJyNlFZcl9UNlVpZTRsVWJSRXF0VTdDb2ZSbFFyWjJXMEFwN2wxa0h5Q05VRnFOVTVCQzA2ampLcWhZeEVLZVcwUXhJNTJPMU5xWjJUcEYybGFWS0ExMzgwWlo1azBEMzhFNG9Zc1FCMGxlRjQ?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776202831,
+      "headline": "US Democrats will try, and try again, to rein in Trump's Iran war powers - Reuters",
+      "id": 7795741,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "US Democrats will try, and try again, to rein in Trump's Iran war powers  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQYlJ5b0E1SFZQTEFBVWVuczJ3MkVid2gwc2FlaEhRWEs3WWNvLTluRU50eFEzSTlaczFrMVlFSUtlZ1NDWERDQm8tT29ZMWxXQ1hiR1RvOUJhakpreWZGX2ItRnFZU2kwdjFfM2xNZFhNTVAwUmNKUGdCX0wtakcxQ2kwWnRiRTVDRFJxRUl2eGNfRGNJRmRNbE1MSlM0VFhweDNDaWFNdw?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776200613,
+      "headline": "Trading Day: Wall Street jumps on optimism over revived US-Iran talks, focus on earnings - Reuters",
+      "id": 7795742,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Trading Day: Wall Street jumps on optimism over revived US-Iran talks, focus on earnings  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5YZFRjbEp4b0s1empsMWdlanNiWUg4RFJoZ1BldUNzT1FxcGZuOXE5OTFZb0tZdzFXV0twLVJyWVZCSVgwYkItaVZzMkpKZUZFQXBxMWZPMzlvS1NlMGFxc2V0SGFOTmdXdTRaaUxqTk4xLU92U2RvV3M1RQ?oc=5"
     },
     {
       "category": "business",
@@ -288,50 +332,6 @@
       "source": "Reuters",
       "summary": "Iran war could hit India's car production, auto body says  Reuters",
       "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOelJGMXA5c1FqeFFvVU5DajFCNldZRFVlTGxRQnlUOTFodjFUYzRIZWdxblhUQTU4dkxJU0tNV1IxZWc0aFBFbnVaeWJ5OVZnZ3d4Y29mOHdKVkZWMUFoMUVMQ29tZWt1YXdRU2tlMWg3TWkyRTlyM1l2LWxXUzVBOWtCbE1hMUVpaTMtNDZHT1dlMkNXY1VYeEV6TzJ4U19MNERyVkl3?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776163860,
-      "headline": "No discussions between Qatar and Iran over payment of funds to stop Iranian attacks, Qatari official says - Reuters",
-      "id": 7794482,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "No discussions between Qatar and Iran over payment of funds to stop Iranian attacks, Qatari official says  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNQUhIZlFpdjlxTUZyZV9nQ1N6ZzlRZW1MUkloc2hQVFpWMVVoRUJUbVBaeVdfeUZLck1DWWhyVHFfcTNGWm1ETzJscTE2RmRGWW0ya1JKbFJwZ3BvcnIweUxkMlVZSEk0ejZGS1RoTTlZMGMxZ05FYW5wQ2NjdldfMnI2SlUyUHpMV3VIUTdGWFl5YmpsOFhzeXdHTHdWRFZfTGU1OEZoaGp4X2lJYXJGUXFUN2VhVWNGZkVmdHE0cUhCeHhaOXlpWEpPQ0IyLVU?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776163130,
-      "headline": "Airlines urge EU to step in as Iran war chokes jet fuel supply - Reuters",
-      "id": 7792830,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "Airlines urge EU to step in as Iran war chokes jet fuel supply  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNcnBlNkdSNVBueHBkVGFmXzUzcEpydmZpLTNZLXVnc0ZiN3hhVGRyNjZkYjZpUWZYWllLMTZoakZILUNWX0tRak1EMmZ1aWQwT2JxQmtmRmUyZFpxRE5oMVBhS2RhWlhCaDBkeUxWTjNTc1lYeFNrUlY0eEhiSzhIQmZVMFZFMUZQVVJNeWFjWjVuNUV2ZEtjaHNJYmZTanJfQXRxd3RyYUhlX0U?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776161453,
-      "headline": "Oil tankers transiting Strait of Hormuz since start of Iran war - Reuters",
-      "id": 7794481,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "Oil tankers transiting Strait of Hormuz since start of Iran war  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQY0dPT3VUYnduOWZFZ05qSjU2dV9zdkhWdzh6OVJxdldxbXRiVjQ4T3RWaEFna1g2dWVoWXZCazZudDVwU2VqWk1YZGVYOHAxSGo5OFAxQld4MzRNYmRUd0NGSHZFLUd3d0FiYmNZTFk1RnhtZ3Zqa3dLemc4UGEzR2NfaFl4R1hEckhPcFhnT0ZuYUFKY1NfWmFkeHhnb3NvWGxZX1luR3c2M1FHbHc?oc=5"
-    },
-    {
-      "category": "top news",
-      "datetime": 1776160581,
-      "headline": "U.S. Hormuz blockade hits India just as Russian oil purchase waiver expires, deepening energy worries",
-      "id": 7792931,
-      "image": "https://image.cnbcfm.com/api/v1/image/108288438-1775631968852-gettyimages-2269741837-INDIA_OIL.jpeg?v=1775631991&w=1920&h=1080",
-      "related": "",
-      "source": "CNBC",
-      "summary": "U.S. moves to blockade Iran, and let a Russian oil waiver lapse, squeeze India’s energy supplies, exposing its vulnerability under rising U.S. pressure.",
-      "url": "https://www.cnbc.com/2026/04/14/us-hormuz-blockade-hits-india-just-as-russian-oil-purchase-waiver-expires-deepening-energy-worries.html"
     }
   ]
 }
