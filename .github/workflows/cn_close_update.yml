@@ -1,0 +1,76 @@
+name: A-Stock Close Update
+
+on:
+  schedule:
+    - cron: '30 7 * * 1-5'  # UTC 07:30 周一-周五 = 北京时间 15:30（A股15:00收盘后30分钟）
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - run: pip install -r requirements.txt
+
+      # ─── A股收盘后数据更新 ───
+      - name: Update A-stock close data
+        run: python scripts/update_cn_close.py
+
+      # ─── 提交数据更改 ───
+      - name: Commit and push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/results/ data/cn_watchlist/
+          git diff --staged --quiet || git commit -m "data: A股收盘数据更新 $(TZ='Asia/Shanghai' date +%Y-%m-%d)"
+          git push
+
+      # ─── 重新构建部署 ───
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd web && npm install && npm run build
+      - run: cp -r data web/dist/data
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./web/dist
+
+  retry-1:
+    needs: update
+    if: failure() && github.event.schedule != ''
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "失败，30 分钟后重试..." && sleep 1800
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - name: Update A-stock close data
+        run: python scripts/update_cn_close.py
+      - name: Commit and push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/results/ data/cn_watchlist/
+          git diff --staged --quiet || git commit -m "data: A股收盘重试 $(TZ='Asia/Shanghai' date +%Y-%m-%d)"
+          git push
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd web && npm install && npm run build
+      - run: cp -r data web/dist/data
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./web/dist

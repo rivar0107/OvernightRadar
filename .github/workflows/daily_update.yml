@@ -1,4 +1,4 @@
-name: Daily Update
+name: Daily Radar Update
 
 on:
   schedule:
@@ -17,28 +17,65 @@ jobs:
         with:
           python-version: '3.11'
           cache: 'pip'
+
       - run: pip install -r requirements.txt
+
       - name: Clean today's stale data
         run: |
           TODAY=$(TZ='Asia/Shanghai' date +%Y-%m-%d)
           rm -f data/results/${TODAY}.json data/watchlist/${TODAY}.json
           echo "Cleaned stale data for ${TODAY}"
-      - run: python scripts/run_daily.py
-      - run: python scripts/fetch_watchlist.py
+
+      # ─── 步骤 1: 获取新闻数据 ───
+      - name: Fetch news
+        run: python scripts/fetch_news.py
+        env:
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
+
+      # ─── 步骤 2: 生成交易信号 ───
+      - name: Generate signals
+        run: python scripts/generate_signals.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      # ─── 步骤 3: 跟踪历史信号 (T+1 验证) ───
+      - name: Track signals
+        run: python scripts/track_signals.py
+
+      # ─── 步骤 4: 运行板块联动统计 ───
+      - name: Run daily stats
+        run: python scripts/run_daily.py
+
+      # ─── 步骤 5: 导出统计数据 ───
+      - name: Export stats
+        run: python scripts/track_signals.py --export
+
+      # ─── 步骤 6: 获取 watchlist 数据 ───
+      - name: Fetch watchlist
+        run: python scripts/fetch_watchlist.py
         env:
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+
+      # ─── 步骤 7: 提交数据更改 ───
       - name: Commit and push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/results/ data/watchlist/
-          git diff --staged --quiet || git commit -m "data: daily update $(date +%Y-%m-%d)"
+          git add data/news/ data/signals/ data/watchlist/ data/results/ data/history.json data/stats/
+          git diff --staged --quiet || git commit -m "data: daily radar update $(date +%Y-%m-%d)"
           git push
+
+      # ─── 步骤 8: 构建前端 ───
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
       - run: cd web && npm install && npm run build
+
+      # ─── 步骤 9: 准备部署目录 ───
       - run: cp -r data web/dist/data
+
+      # ─── 步骤 10: 部署到 GitHub Pages ───
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -60,15 +97,30 @@ jobs:
         run: |
           TODAY=$(TZ='Asia/Shanghai' date +%Y-%m-%d)
           rm -f data/results/${TODAY}.json data/watchlist/${TODAY}.json
-      - run: python scripts/run_daily.py
-      - run: python scripts/fetch_watchlist.py
+      - name: Fetch news
+        run: python scripts/fetch_news.py
+        env:
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
+      - name: Generate signals
+        run: python scripts/generate_signals.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      - name: Track signals
+        run: python scripts/track_signals.py
+      - name: Run daily stats
+        run: python scripts/run_daily.py
+      - name: Export stats
+        run: python scripts/track_signals.py --export
+      - name: Fetch watchlist
+        run: python scripts/fetch_watchlist.py
         env:
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
       - name: Commit and push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/results/ data/watchlist/
+          git add data/news/ data/signals/ data/watchlist/ data/results/ data/history.json data/stats/
           git diff --staged --quiet || git commit -m "data: daily retry-1 $(date +%Y-%m-%d)"
           git push
       - uses: actions/setup-node@v4
@@ -97,15 +149,30 @@ jobs:
         run: |
           TODAY=$(TZ='Asia/Shanghai' date +%Y-%m-%d)
           rm -f data/results/${TODAY}.json data/watchlist/${TODAY}.json
-      - run: python scripts/run_daily.py
-      - run: python scripts/fetch_watchlist.py
+      - name: Fetch news
+        run: python scripts/fetch_news.py
+        env:
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
+      - name: Generate signals
+        run: python scripts/generate_signals.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      - name: Track signals
+        run: python scripts/track_signals.py
+      - name: Run daily stats
+        run: python scripts/run_daily.py
+      - name: Export stats
+        run: python scripts/track_signals.py --export
+      - name: Fetch watchlist
+        run: python scripts/fetch_watchlist.py
         env:
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
       - name: Commit and push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/results/ data/watchlist/
+          git add data/news/ data/signals/ data/watchlist/ data/results/ data/history.json data/stats/
           git diff --staged --quiet || git commit -m "data: daily retry-2 $(date +%Y-%m-%d)"
           git push
       - uses: actions/setup-node@v4

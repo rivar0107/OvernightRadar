@@ -29,3 +29,7 @@ tests/
 !data/results/.gitkeep
 !data/watchlist/.gitkeep
 skills-lock.json
+.worktrees
+data/news/*.json
+data/signals/*.json
+data/stats/*.json
