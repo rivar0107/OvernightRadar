@@ -1,6 +1,6 @@
 {
   "date": "2026-04-14",
-  "fetched_at": "2026-04-14T15:28:26.768725",
+  "fetched_at": "2026-04-14T15:36:51.142821",
   "total": 30,
   "news": [
     {
@@ -24,6 +24,17 @@
       "source": "Reuters",
       "summary": "US, Iran may resume talks this week despite port blockade  Reuters",
       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOOXA0bTBHblBiMUJyaU1FdmxCWVZuc0hwWUk0MzdEQklTWC04MXFSZlE3U2RGRzRORVpaNEIzLUVERkRVUVpTRUZCNUlXUlltXzZYUFRHNDF2MS1Xd005RXhjd2IwLVBySWM1eThBTVl6blJoWHJ6SXFqcl9WeGZBYTdRSUFVOE9NTF9nTmp6dFVXYldkQl9uQXQ0OTktNkIwMWdyUFk4cjdEVmUyX0VrQzhCejQ?oc=5"
+    },
+    {
+      "category": "business",
+      "datetime": 1776175544,
+      "headline": "IMF cuts growth outlook, warns of potential global recession if Iran war worsens - Reuters",
+      "id": 7794052,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "IMF cuts growth outlook, warns of potential global recession if Iran war worsens  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOcmNiNzBrS0RzczdCcVIwbHZiUkpaZEZhM05IU2FFbWFjX21ZdlA1ampGV1lfM1lwX1l4SnM3dVY0VHBtLUdMY3ZneFpVVkVIbFNTVUllWHZUSDBKdUhpa1pWT3NVMGdSeFRaMFdENHlWc1prUFVma0JXZEhGSmtJaHl5MFRhX001QklYcEpxczltLUNfQXlETUdPNXNlTEhGTTVEand1WVg3QUF3R2Z3a2xMa1I5SXlIc1QwdmFB?oc=5"
     },
     {
       "category": "top news",
@@ -126,6 +137,17 @@
     },
     {
       "category": "business",
+      "datetime": 1776160566,
+      "headline": "China's export engine stutters as Iran war chills global demand - Reuters",
+      "id": 7792209,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "China's export engine stutters as Iran war chills global demand  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNLXhzMWhMLWxBWlF0NWZkb0RLQ3gtNXVYZmRVRng0MUw2clZ6dGVFbFdpeHR2UllHYmRmUHBWT29fNjA3aEQ2bDRzLUN6WGJTM19FVjdRMjQ3VGlLbjZKOEpLV1pRQmpJWnZ3ODRETWRvN2dqcHNYM1lCVUl4TVBEZ2t1SFAwbTd4RXVNVnZrOE9ZVnF4a0J3bnloNWJseGhWTGFJWEJtMnRGbmhX?oc=5"
+    },
+    {
+      "category": "business",
       "datetime": 1776159138,
       "headline": "US, Iranian teams could return to Islamabad for peace talks this week, multiple sources say - Reuters",
       "id": 7792414,
@@ -214,17 +236,6 @@
     },
     {
       "category": "business",
-      "datetime": 1776137220,
-      "headline": "China's export engine stutters as Iran war chills global demand - Reuters",
-      "id": 7792209,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "China's export engine stutters as Iran war chills global demand  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNLXhzMWhMLWxBWlF0NWZkb0RLQ3gtNXVYZmRVRng0MUw2clZ6dGVFbFdpeHR2UllHYmRmUHBWT29fNjA3aEQ2bDRzLUN6WGJTM19FVjdRMjQ3VGlLbjZKOEpLV1pRQmpJWnZ3ODRETWRvN2dqcHNYM1lCVUl4TVBEZ2t1SFAwbTd4RXVNVnZrOE9ZVnF4a0J3bnloNWJseGhWTGFJWEJtMnRGbmhX?oc=5"
-    },
-    {
-      "category": "business",
       "datetime": 1776133080,
       "headline": "South Korea's Lee warns Iran war to keep oil price high, orders quick aid rollout - Reuters",
       "id": 7792105,
@@ -258,6 +269,17 @@
     },
     {
       "category": "business",
+      "datetime": 1776128052,
+      "headline": "Iran war allows Australia to revive green iron ambitions - Reuters",
+      "id": 7792831,
+      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
+      "related": "",
+      "source": "Reuters",
+      "summary": "Iran war allows Australia to revive green iron ambitions  Reuters",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQaGtEcG9oTzBTQkQ2S3ZyN0Q4dFE5dm1SYWdabEdHRGgteHpoRC1uS2ZHLXBSSF9qX3Ayd0pJNTNnYTJGYV9JMjhmWE5yNTJLRHJGa2dfeVhUU2NnYm9Fd01XUUtKOTI4M0ZRWFhjOER1LThvSGtwVjFPblNQWnd1eW9pQXdOdW04UUJFbEFmbnpwWEZoOS1fZWliclRnTlB0Nk14ZWtidllLUC13bnc?oc=5"
+    },
+    {
+      "category": "business",
       "datetime": 1776127920,
       "headline": "Dollar falls as traders hope for Mideast conflict resolution - Reuters",
       "id": 7791177,
@@ -266,17 +288,6 @@
       "source": "Reuters",
       "summary": "Dollar falls as traders hope for Mideast conflict resolution  Reuters",
       "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPOHRVTkxBaVhqdlNsU0RlMlc4aTFqdUdlMlZWVlBteF8yeUtJSGJIM2hFV3F0SzVtYzNUMWVMWllnQ2tkdWJXb08zYklfRWU4QnY3UzdOUmJjRUpzOXFUSlVrY0VnX0tyQ19kZU9tRHJwWEZTY2F6bmpnS1RkZGtLcTIxR0JMNzQ1VUNzaFNIckluYnYzNlJHWkFUNDZ5aXk5emc?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776126864,
-      "headline": "Iran war allows Australia to revive green iron ambitions - Reuters",
-      "id": 7792831,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "Iran war allows Australia to revive green iron ambitions  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQaGtEcG9oTzBTQkQ2S3ZyN0Q4dFE5dm1SYWdabEdHRGgteHpoRC1uS2ZHLXBSSF9qX3Ayd0pJNTNnYTJGYV9JMjhmWE5yNTJLRHJGa2dfeVhUU2NnYm9Fd01XUUtKOTI4M0ZRWFhjOER1LThvSGtwVjFPblNQWnd1eW9pQXdOdW04UUJFbEFmbnpwWEZoOS1fZWliclRnTlB0Nk14ZWtidllLUC13bnc?oc=5"
     },
     {
       "category": "business",
@@ -321,17 +332,6 @@
       "source": "Reuters",
       "summary": "Wall Street indexes gain as investors hold out hope for US-Iran resolution  Reuters",
       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPNnlHODRfWHZBSmRTd0hYTjBoVndLOTk4dm8tS1Q5WmVlQVZ5NEtoYU9wUFZKdXdMOXlYc0d4RU5jMEFyTUthSTZaMTlGMEJEaHdtNWh1YndGQnlRWjhQMnJzVmZFNTFhZ2FQX3JESzhxc1NaMXRiclVmNHlaZkIwT3dhWTJ6eFgtZ3ZQVDBZV2FoQ3RPWlRCbm5ZSDNSX2tqV0NjWE9EM0JLaENHRTNj?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776119519,
-      "headline": "Trading Day: US stocks gain, dollar dips on hopes for Iran war negotiations - Reuters",
-      "id": 7790447,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "Trading Day: US stocks gain, dollar dips on hopes for Iran war negotiations  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFB0T1FSX0NzQlRpYjNPQU1rbkVBa2M5RnB0NjdoUjhfb0gxUUlmTG1LSlRyN21UMmF1Y0RtZnZzdXZoMnVxSlFWYVQxaFRCZ3dqSF9VcW8zeUJjUTNsMERURWJmQkhvd3JFUFUyR2ZORTJyMDJncGpOWWpGVQ?oc=5"
     }
   ]
 }
