@@ -476,13 +476,15 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── Benchmark Switcher (基准切换器) ───────────────── */
 
-.wl-benchmark-inline {
-  display: inline-flex;
+.wl-benchmark-row {
+  display: flex;
   align-items: center;
-  gap: var(--spacing-1);
-  margin-left: var(--spacing-2);
-  padding-left: var(--spacing-2);
-  border-left: 1px solid var(--color-border);
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-3);
+  padding: var(--spacing-2) var(--spacing-3);
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
 }
 
 .wl-benchmark-label {
@@ -492,7 +494,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .wl-benchmark-btn {
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--spacing-1) var(--spacing-3);
   border: 1px solid var(--color-border);
   background: var(--color-surface);
   color: var(--color-muted);

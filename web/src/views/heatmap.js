@@ -64,40 +64,9 @@ function renderMarketSwitcher(container, currentMarket, onSwitch) {
   container.querySelectorAll('.wl-market-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const market = btn.dataset.market;
-      if (market !== currentMarket) {
-        onSwitch(market);
-      }
-    });
-  });
-}
-
-// ─── 基准切换器渲染（仅 A 股）─────────────────────────────
-function renderBenchmarkSwitcher(container, currentBenchmark, onSwitch) {
-  const benchmarks = [
-    { key: 'hs300', label: '沪深300' },
-    { key: 'zz500', label: '中证500' },
-  ];
-
-  container.innerHTML = `
-    <div class="wl-benchmark-switcher">
-      <span class="wl-benchmark-label">基准:</span>
-      ${benchmarks.map(b => `
-        <button
-          class="wl-benchmark-btn ${b.key === currentBenchmark ? 'active' : ''}"
-          data-benchmark="${b.key}"
-        >
-          ${b.label}
-        </button>
-      `).join('')}
-    </div>
-  `;
-
-  container.querySelectorAll('.wl-benchmark-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const benchmark = btn.dataset.benchmark;
-      if (benchmark !== currentBenchmark) {
-        onSwitch(benchmark);
-      }
+      console.log('[MarketSwitcher] Button clicked:', market);
+      // 直接触发切换，不再检查 currentMarket（因为参数可能过期）
+      onSwitch(market);
     });
   });
 }
@@ -108,29 +77,50 @@ function renderBenchmarkSwitcher(container, currentBenchmark, onSwitch) {
  * @param {HTMLElement} header - #app-header
  */
 export async function renderHeatmapView(container, header) {
+  console.log('[HeatmapView] renderHeatmapView called');
   // 加载美股数据（如果还没加载）
   if (!usWatchlistData) {
+    console.log('[HeatmapView] Loading US data...');
     usWatchlistData = await fetchWatchlistData();
+    console.log('[HeatmapView] US data loaded:', usWatchlistData ? `${usWatchlistData.total_etfs} etfs` : 'null');
   }
 
   // 默认显示美股
+  console.log('[HeatmapView] Rendering US market view');
   await renderMarketView(container, header, 'us');
 }
 
 // ─── 渲染指定市场的视图 ──────────────────────────────────
 async function renderMarketView(container, header, market, benchmark = null) {
+  console.log('[MarketView] Switching to market:', market);
   currentMarket = market;
+  const isCN = market === 'cn';
+
+  // 显示加载状态
+  const marketName = isCN ? 'A股' : '美股';
+  header.innerHTML = `
+    <h1 class="title">市场观察表</h1>
+    <p class="slogan">正在加载${marketName}数据...</p>
+  `;
+  container.innerHTML = '<p class="empty-state">加载中...</p>';
 
   // 加载数据
   let data;
   if (market === 'us') {
+    console.log('[MarketView] Loading US data...');
+    if (!usWatchlistData) {
+      usWatchlistData = await fetchWatchlistData();
+    }
     data = usWatchlistData;
   } else {
+    console.log('[MarketView] Loading CN data...');
     if (!cnWatchlistData) {
       cnWatchlistData = await fetchCNWatchlistData();
     }
     data = cnWatchlistData;
   }
+
+  console.log('[MarketView] Data loaded:', data ? `${data.total_sectors || '?'} sectors` : 'null');
 
   if (!data) {
     header.innerHTML = `
@@ -140,8 +130,6 @@ async function renderMarketView(container, header, market, benchmark = null) {
     container.innerHTML = '<p class="empty-state">暂无数据</p>';
     return;
   }
-
-  const isCN = market === 'cn';
   const updateTime = formatUpdateTime(data.updated_at);
 
   // Header
@@ -185,25 +173,19 @@ async function renderMarketView(container, header, market, benchmark = null) {
 
   container.innerHTML = disclaimerHtml + mainContentHtml + detailHtml;
 
-  // 渲染市场切换器
+  // 渲染市场切换器（使用最新的 currentMarket）
+  const switcherContainer = document.getElementById('wl-market-switcher');
   renderMarketSwitcher(
-    document.getElementById('wl-market-switcher'),
+    switcherContainer,
     currentMarket,
-    (newMarket) => renderMarketView(container, header, newMarket)
+    (newMarket) => {
+      // 更新按钮状态
+      switcherContainer.querySelectorAll('.wl-market-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.market === newMarket);
+      });
+      renderMarketView(container, header, newMarket);
+    }
   );
-
-  // 渲染基准切换器（仅A股）
-  if (isCN) {
-    renderBenchmarkSwitcher(
-      document.getElementById('wl-benchmark-switcher'),
-      currentBenchmark,
-      (newBenchmark) => {
-        currentBenchmark = newBenchmark;
-        // TODO: 重新加载对应基准的数据
-        alert(`切换到基准: ${newBenchmark}（需要重新获取数据，功能开发中）`);
-      }
-    );
-  }
 
   // 渲染指标切换
   const cnIndicators = isCN ? [
@@ -224,20 +206,20 @@ async function renderMarketView(container, header, market, benchmark = null) {
     }
   );
 
-  // 渲染基准切换器（仅A股，在日涨跌下方）
+  // 渲染基准切换器（仅A股，单独一行）
   if (isCN) {
     const indicatorsContainer = document.getElementById('wl-indicators');
     const benchmarkHtml = `
-      <div class="wl-benchmark-inline">
+      <div class="wl-benchmark-row">
         <span class="wl-benchmark-label">基准:</span>
         <button class="wl-benchmark-btn ${currentBenchmark === 'hs300' ? 'active' : ''}" data-benchmark="hs300">沪深300</button>
         <button class="wl-benchmark-btn ${currentBenchmark === 'zz500' ? 'active' : ''}" data-benchmark="zz500">中证500</button>
       </div>
     `;
-    // 插入到第一个指标按钮后面
-    const firstIndicator = indicatorsContainer.querySelector('.wl-indicator-btn');
-    if (firstIndicator) {
-      firstIndicator.insertAdjacentHTML('afterend', benchmarkHtml);
+    // 插入到指标按钮行之前
+    const indicatorsRow = indicatorsContainer.querySelector('.wl-indicators-row');
+    if (indicatorsRow) {
+      indicatorsRow.insertAdjacentHTML('beforebegin', benchmarkHtml);
     }
 
     // 绑定基准切换事件
@@ -261,6 +243,8 @@ async function renderMarketView(container, header, market, benchmark = null) {
 
   // 初始化详情面板
   showDetail(null, null);
+
+  console.log('[MarketView] Render complete for market:', market);
 }
 
 function renderHeatmapContent(container, groups, indicatorKey, isCN = false) {
