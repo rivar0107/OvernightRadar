@@ -18,6 +18,11 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
       - run: pip install -r requirements.txt
+      - name: Clean today's stale data
+        run: |
+          TODAY=$(TZ='Asia/Shanghai' date +%Y-%m-%d)
+          rm -f data/results/${TODAY}.json data/watchlist/${TODAY}.json
+          echo "Cleaned stale data for ${TODAY}"
       - run: python scripts/run_daily.py
       - run: python scripts/fetch_watchlist.py
         env:
@@ -51,6 +56,10 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
       - run: pip install -r requirements.txt
+      - name: Clean today's stale data
+        run: |
+          TODAY=$(TZ='Asia/Shanghai' date +%Y-%m-%d)
+          rm -f data/results/${TODAY}.json data/watchlist/${TODAY}.json
       - run: python scripts/run_daily.py
       - run: python scripts/fetch_watchlist.py
         env:
@@ -84,6 +93,10 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
       - run: pip install -r requirements.txt
+      - name: Clean today's stale data
+        run: |
+          TODAY=$(TZ='Asia/Shanghai' date +%Y-%m-%d)
+          rm -f data/results/${TODAY}.json data/watchlist/${TODAY}.json
       - run: python scripts/run_daily.py
       - run: python scripts/fetch_watchlist.py
         env:
