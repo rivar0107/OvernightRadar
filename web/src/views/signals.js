@@ -297,11 +297,6 @@ function renderSignalsContent(container, generatedAt = null) {
 
   container.innerHTML = `
     <div class="signals-view">
-      <div class="signals-header">
-        <h2 class="signals-title">交易信号</h2>
-        <p class="signals-subtitle">基于板块异动和市场趋势自动生成</p>
-      </div>
-      ${renderStatsOverview(signalsState.allSignals)}
       ${renderSortSelector(signalsState.sortBy)}
       <div class="signals-list" id="signals-list">
         ${displayedSignals.map(signal => renderSignalCard(signal, generatedAt)).join('')}
