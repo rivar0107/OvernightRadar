@@ -1,0 +1,38 @@
+{
+  "date": "2026-04-15",
+  "generated_at": "2026-04-15T14:41:28.802567",
+  "total": 1,
+  "metadata": {
+    "news_count": 30,
+    "raw_count": 4,
+    "processed_count": 4,
+    "final_count": 1,
+    "avg_score": 45.2,
+    "min_score": 50,
+    "ai_provider": "deepseek"
+  },
+  "signals": [
+    {
+      "title": "市场押注伊朗战争结束，风险情绪回归",
+      "direction": "利多",
+      "sectors": [
+        "大盘指数",
+        "科技",
+        "非必需消费品"
+      ],
+      "action": "若市场回调（如标普500指数跌至关键支撑位），可分批买入超跌的科技成长股及受战争担忧压制的航空、旅游股。",
+      "reason": "多条新闻（17， 7， 14）显示市场正消化伊朗战争结束的预期，美元战争溢价消退。这将缓解能源价格压力，提振整体风险偏好，前期受地缘政治压制的板块有望反弹。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": false,
+      "score": 50,
+      "level": "中",
+      "score_detail": {
+        "importance": 15,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 10
+      }
+    }
+  ]
+}
