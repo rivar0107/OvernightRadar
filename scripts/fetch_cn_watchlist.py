@@ -313,9 +313,12 @@ def build_output(groups_data: dict, benchmark_key: str) -> dict:
 
 # ─── 主运行函数 ─────────────────────────────────────────────
 
-def run_fetch(output_dir: str = None, benchmark_key: str = None):
+def run_fetch(output_dir: str = None, benchmark_key: str = None, force: bool = False):
     """
     主入口：获取 ETF 行情 → 计算 REL → 输出 JSON。
+
+    Args:
+        force: 为 True 时覆盖已有文件（盘中刷新用）
     """
     if output_dir is None:
         output_dir = OUTPUT_DIR
@@ -375,7 +378,7 @@ def run_fetch(output_dir: str = None, benchmark_key: str = None):
             filename = f"{output['date']}_{benchmark_key}.json"
         output_path = os.path.join(output_dir, filename)
 
-        if os.path.exists(output_path):
+        if os.path.exists(output_path) and not force:
             print(f"SKIP: {output_path} already exists")
             return None
 
@@ -402,5 +405,10 @@ if __name__ == "__main__":
         default=DEFAULT_BENCHMARK,
         help="基准指数 (默认: hs300)",
     )
+    parser.add_argument(
+        "--force", "-f",
+        action="store_true",
+        help="覆盖已有文件（盘中刷新用）",
+    )
     args = parser.parse_args()
-    run_fetch(benchmark_key=args.benchmark)
+    run_fetch(benchmark_key=args.benchmark, force=args.force)
