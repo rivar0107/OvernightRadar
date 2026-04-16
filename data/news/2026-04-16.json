@@ -1,8 +1,19 @@
 {
   "date": "2026-04-16",
-  "fetched_at": "2026-04-16T13:08:09.026085",
+  "fetched_at": "2026-04-16T13:28:14.904432",
   "total": 30,
   "news": [
+    {
+      "category": "top news",
+      "datetime": 1776344912,
+      "headline": "Jim Cramer's top 10 things to watch in the stock market Thursday",
+      "id": 7803847,
+      "image": "https://image.cnbcfm.com/api/v1/image/108248606-1767689779972-gettyimages-2253792540-US_STOCKS.jpeg?v=1775823848&w=1920&h=1080",
+      "related": "",
+      "source": "CNBC",
+      "summary": "Stocks look to build on record-setting session, driven by hopes of an end to the Iran war.",
+      "url": "https://www.cnbc.com/2026/04/16/jim-cramers-top-10-things-to-watch-in-the-stock-market-thursday.html"
+    },
     {
       "category": "business",
       "datetime": 1776344401,
@@ -13,6 +24,17 @@
       "source": "CNBC",
       "summary": "Lawyers and advisors to the wealthy share tax tactics from long-short equity strategies to front-loading charitable gifts.",
       "url": "https://www.cnbc.com/2026/04/16/wealthy-tax-planning-2026-bills.html"
+    },
+    {
+      "category": "top news",
+      "datetime": 1776343988,
+      "headline": "Spring homebuying season is here, but it’s not bringing much price relief for buyers",
+      "id": 7803848,
+      "image": "https://image.cnbcfm.com/api/v1/image/108291859-1776268718192-gettyimages-2153602882-mim523.jpeg?v=1776268880&w=1920&h=1080",
+      "related": "",
+      "source": "CNBC",
+      "summary": "More homes are hitting the market this spring, but high prices and mortgage rates are still keeping many buyers on the sidelines.",
+      "url": "https://www.cnbc.com/2026/04/16/spring-homebuying-season-isnt-bringing-relief-for-buyers.html"
     },
     {
       "category": "business",
@@ -310,28 +332,6 @@
       "source": "Reuters",
       "summary": "US warns that buyers of Iranian oil could be hit with sanctions  Reuters",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPdkVLU2x6LWQ5V3NfVmpCN0lVYmhqWjNJMUxKZ1l1YWNUTy15bnRIcVdXM1hKUVdiUDl2RFVXeU81MnJHREdlWnRPS3Z2YTQxOTdlQ2VyYUtuT2l2Y1lfcWVjTWNXTGFFa3g4SkIzRmdRS0xzallnOXVSMjhWMEx0N2tsbEx3TFRHWUJWNlRISlJVU1RvckR0eUJUVGVTUnJkX0U5MUpwemhRQVhGYmpKUlhjeWFTVGs?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776290312,
-      "headline": "IMF says Bank of Japan can see through inflationary shock from Iran war - Reuters",
-      "id": 7801190,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "IMF says Bank of Japan can see through inflationary shock from Iran war  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQWGFjLUZlRm5oLWpXTjlQcEZmaXFsMGxwQnBWM0hRUk1yNHppNG9HYUJEUjAyMDFBb3BTQjJLQVotd21lcGJnSnZ4RmZEMFFralQ0NHN6OEtIQ1hRaVB6MkZPZVpxN1MzbVoxLXZJZDh5NV9Mcm1ZOU54ajExa1hwbjNBcUlnYXhDVm12TkJwamdZREloZVNFQnhfbWpteHRmc3N6ZnRzRmpPczRVY3gxZG1SRENsc0ZmblE?oc=5"
-    },
-    {
-      "category": "business",
-      "datetime": 1776285161,
-      "headline": "US probes suspicious oil trades made before Trump Iran pivots, source says - Reuters",
-      "id": 7800242,
-      "image": "https://static2.finnhub.io/file/finnhub/logo/reuters_logo.jpeg",
-      "related": "",
-      "source": "Reuters",
-      "summary": "US probes suspicious oil trades made before Trump Iran pivots, source says  Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxObEFvSkkyTHhwcFNwbTkyQW41S0hJRDFlZko1VTVEY09SNU1MYnFQYVczUXVHWk4zMnExT08yb0hYRi1GanB1azdIQ284NkpOLWlnLXpqa0NheWpILUxibzhCLXdWWW9RTlZTY2czdnotaUYwS3J5QjNJYWVQWF9aZzhrNU1YUTBjWU85SzB3TnAybDJhQzZnaGxzXzlnRmlMYnJLRFZUU3JDX3hWcDRNSlFxc3I1SEVXN2xXS0VwM0lxUGc?oc=5"
     }
   ]
 }
