@@ -1,7 +1,10 @@
 """
 A股 ETF 市场观察数据获取脚本
-数据源：AkShare ETF 行情接口
+数据源：AkShare ETF 行情接口 + 累积日线历史
 输出：按分组的 ETF 数据 JSON
+
+REL 计算方式：每日累积 ETF 收盘价到 history.json，从累积数据计算 N 日相对强度。
+这样避免调用被封锁的 fund_etf_hist_em API。
 
 用法: python scripts/fetch_cn_watchlist.py
 """
@@ -23,6 +26,7 @@ from cn_sector_config import (
 # ─── 配置 ─────────────────────────────────────────────────
 
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "cn_watchlist")
+HISTORY_FILE = os.path.join(OUTPUT_DIR, "history.json")
 HISTORY_POINTS = 30
 REL_PERIODS = [5, 20, 60, 120]
 MAX_RETRIES = 5
@@ -73,6 +77,7 @@ def fetch_benchmark_history(benchmark_key: str, period_days: int = 150) -> pd.Se
             df = df[(df['date'] >= start_date) & (df['date'] <= end_date)]
             df = df.sort_values('date')
 
+            print(f"    OK: {len(df)} 条基准记录")
             return df.set_index('date')['close']
 
         except Exception as e:
@@ -164,72 +169,101 @@ def fetch_etf_realtime(etf_codes: list) -> dict:
     return result
 
 
-# ─── ETF 历史数据 ─────────────────────────────────────────────
+# ─── 累积日线历史 ─────────────────────────────────────────────
 
-def fetch_etf_history(code: str, period_days: int = 150) -> pd.Series:
+def load_price_history(history_path: str) -> dict:
     """
-    获取单个 ETF 历史收盘价。
+    加载累积的 ETF 日线价格历史。
+
+    Returns:
+        {code: {"2026-04-14": 4.65, "2026-04-15": 4.70, ...}}
+    """
+    if not os.path.exists(history_path):
+        print(f"  历史文件不存在，从零开始: {history_path}")
+        return {}
+
+    try:
+        with open(history_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        total_dates = sum(len(v) for v in data.values())
+        print(f"  加载历史: {len(data)} 只 ETF, {total_dates} 条价格记录")
+        return data
+    except Exception as e:
+        print(f"  WARNING: 加载历史文件失败: {e}")
+        return {}
+
+
+def save_price_history(history_path: str, history: dict):
+    """保存累积日线价格历史。"""
+    os.makedirs(os.path.dirname(history_path), exist_ok=True)
+    with open(history_path, "w", encoding="utf-8") as f:
+        json.dump(history, f, ensure_ascii=False)
+    total_dates = sum(len(v) for v in history.values())
+    print(f"  保存历史: {len(history)} 只 ETF, {total_dates} 条价格记录 → {history_path}")
+
+
+def update_price_history(
+    history: dict,
+    realtime_data: dict,
+    date_str: str,
+) -> dict:
+    """
+    将今日实时价格追加到累积历史。
+
+    Args:
+        history: {code: {"2026-04-14": 4.65, ...}}
+        realtime_data: {code: {"price": 4.746, ...}}
+        date_str: "2026-04-16"
+
+    Returns:
+        更新后的 history
+    """
+    updated_count = 0
+    for code, rt in realtime_data.items():
+        price = rt.get("price")
+        if not price or price <= 0:
+            continue
+
+        if code not in history:
+            history[code] = {}
+
+        # 追加/更新今日价格
+        history[code][date_str] = price
+        updated_count += 1
+
+    # 清理超过 200 天的旧数据（保留足够计算 REL_120 + 余量）
+    cutoff_date = (datetime.now() - timedelta(days=200)).strftime("%Y-%m-%d")
+    for code in list(history.keys()):
+        history[code] = {
+            d: p for d, p in history[code].items()
+            if d >= cutoff_date
+        }
+
+    print(f"  追加今日价格: {updated_count} 只 ETF ({date_str})")
+    return history
+
+
+def history_to_series(code: str, history: dict) -> pd.Series:
+    """
+    将累积历史转为 pandas Series，用于 REL 计算。
 
     Returns:
         收盘价 Series，索引为日期
     """
-    end_date = datetime.now().strftime("%Y%m%d")
-    start_date = (datetime.now() - timedelta(days=period_days)).strftime("%Y%m%d")
+    if code not in history or not history[code]:
+        return pd.Series()
 
-    for retry in range(MAX_RETRIES):
-        try:
-            # 增加 requests 超时保护
-            import requests
-            original_get = requests.Session.get
-            def _patched_get(self, url, **kwargs):
-                kwargs.setdefault('timeout', ETF_SPOT_TIMEOUT)
-                return original_get(self, url, **kwargs)
-            requests.Session.get = _patched_get
-            try:
-                df = ak.fund_etf_hist_em(
-                    symbol=code,
-                    period="daily",
-                    start_date=start_date,
-                    end_date=end_date,
-                    adjust="qfq",
-                )
-            finally:
-                requests.Session.get = original_get
-            if df is None:
-                print(f"    [hist] {code}: API 返回 None")
-                return pd.Series()
-            if df.empty:
-                print(f"    [hist] {code}: API 返回空 DataFrame")
-                return pd.Series()
+    prices = history[code]
+    dates = []
+    values = []
+    for date_str, price in sorted(prices.items()):
+        dates.append(pd.to_datetime(date_str))
+        values.append(float(price))
 
-            # 列名映射
-            col_map = {}
-            for col in df.columns:
-                if col in ("日期", "date"):
-                    col_map[col] = "date"
-                elif col in ("收盘", "close"):
-                    col_map[col] = "close"
-            df = df.rename(columns=col_map)
+    if not dates:
+        return pd.Series()
 
-            if "date" not in df.columns or "close" not in df.columns:
-                print(f"    [hist] {code}: 列名不匹配 {list(df.columns)}")
-                return pd.Series()
-
-            df['date'] = pd.to_datetime(df['date'])
-            df = df.sort_values('date')
-
-            print(f"    [hist] {code}: {len(df)} 条记录")
-            return df.set_index('date')['close']
-
-        except Exception as e:
-            if retry < MAX_RETRIES - 1:
-                print(f"    [hist] {code}: 重试 {retry + 1}/{MAX_RETRIES} - {e}")
-                time.sleep(1)
-                continue
-            print(f"    [hist] {code}: 全部重试失败 - {e}")
-            return pd.Series()
-
-    return pd.Series()
+    return pd.Series(values, index=dates)
 
 
 # ─── REL 计算 ─────────────────────────────────────────────
@@ -292,24 +326,27 @@ def build_etf_data(
     code: str,
     realtime: dict,
     benchmark_close: pd.Series,
+    etf_history_series: pd.Series,
 ) -> dict:
-    """构建单个 ETF 的数据对象。"""
+    """
+    构建单个 ETF 的数据对象。
+
+    Args:
+        etf_history_series: 从累积日线构建的价格 Series
+    """
     etf_info = get_etf_by_code(code)
     if not etf_info:
         return None
 
-    # 获取历史数据
-    etf_close = fetch_etf_history(code)
-
-    # 计算 REL
-    rel_data = calculate_rel(etf_close, benchmark_close)
+    # 计算 REL（从累积日线数据）
+    rel_data = calculate_rel(etf_history_series, benchmark_close)
     rank_data = calculate_rank(rel_data)
 
     # YTD
-    ytd_ret = calculate_ytd(etf_close)
+    ytd_ret = calculate_ytd(etf_history_series)
 
     # 历史走势
-    history = generate_history(etf_close, realtime["price"])
+    history = generate_history(etf_history_series, realtime["price"])
 
     return {
         "code": code,
@@ -345,7 +382,7 @@ def build_output(groups_data: dict, benchmark_key: str) -> dict:
 
 def run_fetch(output_dir: str = None, benchmark_key: str = None, force: bool = False):
     """
-    主入口：获取 ETF 行情 → 计算 REL → 输出 JSON。
+    主入口：获取 ETF 行情 → 追加历史 → 计算 REL → 输出 JSON。
 
     Args:
         force: 为 True 时覆盖已有文件（盘中刷新用）
@@ -363,19 +400,18 @@ def run_fetch(output_dir: str = None, benchmark_key: str = None, force: bool = F
 
     try:
         # 0. 提前检查文件是否已存在（避免浪费 API 调用）
-        output_dir_resolved = os.path.abspath(output_dir)
         date_str = datetime.now().strftime("%Y-%m-%d")
         if benchmark_key == DEFAULT_BENCHMARK:
             filename = f"{date_str}.json"
         else:
             filename = f"{date_str}_{benchmark_key}.json"
-        output_path = os.path.join(output_dir_resolved, filename)
+        output_path = os.path.join(output_dir, filename)
 
         if os.path.exists(output_path) and not force:
             print(f"SKIP: {output_path} already exists (use --force to overwrite)")
             return None
 
-        # 1. 获取基准指数历史
+        # 1. 获取基准指数历史（API 正常可用）
         print(f"基准指数: {BENCHMARKS[benchmark_key]['name']}")
         benchmark_close = fetch_benchmark_history(benchmark_key)
         if benchmark_close.empty:
@@ -388,7 +424,14 @@ def run_fetch(output_dir: str = None, benchmark_key: str = None, force: bool = F
             print("ERROR: 无法获取 ETF 行情")
             return None
 
-        # 3. 按分组处理每个 ETF
+        # 3. 加载累积日线历史 + 追加今日数据
+        print("累积日线历史:")
+        history_path = os.path.join(output_dir, "history.json")
+        price_history = load_price_history(history_path)
+        price_history = update_price_history(price_history, realtime_data, date_str)
+        save_price_history(history_path, price_history)
+
+        # 4. 按分组处理每个 ETF
         groups_output = {}
         for group_key, group_conf in CN_ETF_GROUPS.items():
             sectors = []
@@ -398,11 +441,15 @@ def run_fetch(output_dir: str = None, benchmark_key: str = None, force: bool = F
                     print(f"  SKIP: {code} {etf_conf['name']} — 无实时数据")
                     continue
 
-                print(f"  处理: {code} {etf_conf['name']}...")
-                etf_data = build_etf_data(code, realtime_data[code], benchmark_close)
+                # 从累积历史构建 Series
+                etf_series = history_to_series(code, price_history)
+                print(f"  {code} {etf_conf['name']}: {len(etf_series)} 日历史")
+
+                etf_data = build_etf_data(
+                    code, realtime_data[code], benchmark_close, etf_series
+                )
                 if etf_data:
                     sectors.append(etf_data)
-                time.sleep(0.3)
 
             groups_output[group_key] = {
                 "display_name": group_conf["display_name"],
@@ -410,10 +457,10 @@ def run_fetch(output_dir: str = None, benchmark_key: str = None, force: bool = F
             }
             print(f"  [{group_conf['display_name']}] {len(sectors)} 只")
 
-        # 4. 构建输出
+        # 5. 构建输出
         output = build_output(groups_output, benchmark_key)
 
-        # 5. 写入文件
+        # 6. 写入文件
         os.makedirs(output_dir, exist_ok=True)
 
         with open(output_path, "w", encoding="utf-8") as f:
