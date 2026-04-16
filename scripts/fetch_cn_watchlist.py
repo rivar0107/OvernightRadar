@@ -178,13 +178,23 @@ def fetch_etf_history(code: str, period_days: int = 150) -> pd.Series:
 
     for retry in range(MAX_RETRIES):
         try:
-            df = ak.fund_etf_hist_em(
-                symbol=code,
-                period="daily",
-                start_date=start_date,
-                end_date=end_date,
-                adjust="qfq",
-            )
+            # 增加 requests 超时保护
+            import requests
+            original_get = requests.Session.get
+            def _patched_get(self, url, **kwargs):
+                kwargs.setdefault('timeout', ETF_SPOT_TIMEOUT)
+                return original_get(self, url, **kwargs)
+            requests.Session.get = _patched_get
+            try:
+                df = ak.fund_etf_hist_em(
+                    symbol=code,
+                    period="daily",
+                    start_date=start_date,
+                    end_date=end_date,
+                    adjust="qfq",
+                )
+            finally:
+                requests.Session.get = original_get
             if df is None or df.empty:
                 return pd.Series()
 

@@ -140,7 +140,7 @@ async function renderMarketView(container, header, market, benchmark = null) {
         <h1 class="title">市场观察表</h1>
         <p class="slogan">
           Market Watchlist ·
-          ${isCN ? 'A股申万板块相对强度热力图' : '美股 ETF 相对强度热力图'}
+          ${isCN ? 'A股 ETF 板块相对强度热力图' : '美股 ETF 相对强度热力图'}
         </p>
         <p class="date">更新时间: ${updateTime || data.date}</p>
       </div>

@@ -25,9 +25,12 @@ async function fetchLatest(dir, days = 7) {
     dates.push(formatDate(d));
   }
 
+  // cache-busting: 加时间戳防止浏览器缓存旧数据
+  const cacheBuster = `?t=${now.getHours()}-${now.getMinutes()}`;
+
   for (const date of dates) {
     try {
-      const resp = await fetch(`${BASE_URL}${dir}/${date}.json`);
+      const resp = await fetch(`${BASE_URL}${dir}/${date}.json${cacheBuster}`);
       if (resp.ok) {
         return await resp.json();
       }
