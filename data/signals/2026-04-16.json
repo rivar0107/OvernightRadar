@@ -1,0 +1,59 @@
+{
+  "date": "2026-04-16",
+  "generated_at": "2026-04-16T00:15:48.781373",
+  "total": 2,
+  "metadata": {
+    "news_count": 30,
+    "raw_count": 4,
+    "processed_count": 4,
+    "final_count": 2,
+    "avg_score": 47.0,
+    "min_score": 50,
+    "ai_provider": "deepseek"
+  },
+  "signals": [
+    {
+      "title": "地缘风险溢价消退，大盘创新高",
+      "direction": "利多",
+      "sectors": [
+        "大盘指数",
+        "科技"
+      ],
+      "action": "标普500指数（SPY）若回调至前期支撑位（如5日均线）可考虑分批买入，避免在极度超买（新闻18）时追高",
+      "reason": "新闻6指出标普500已收复美伊冲突以来的所有失地并创下新高，显示市场对地缘风险的恐慌迅速消退，流动性驱动和经济增长预期重新主导市场。新闻7提到企业处于观望模式，但未出现大规模收缩，整体环境仍支持风险资产。新闻19也显示科技股持续强势。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 53,
+      "level": "中",
+      "score_detail": {
+        "importance": 15,
+        "reach": 15,
+        "pricing": 5,
+        "clarity": 18
+      }
+    },
+    {
+      "title": "伊朗局势缓和与油价压力",
+      "direction": "利空",
+      "sectors": [
+        "能源",
+        "航空",
+        "航运"
+      ],
+      "action": "若油价相关股票（如XLE）反弹，可考虑逢高减仓或做空；航空股（如JETS）若因油价下跌反弹，可短线关注",
+      "reason": "新闻1、3、10、12显示美国对伊朗持续施压并可能制裁其石油买家，但伊朗提出缓和霍尔木兹海峡紧张局势的提议（新闻10），且美国对达成协议表示乐观（新闻1）。这种“施压+谈判”的组合可能限制油价短期飙升空间，缓解航空、航运等对燃油成本敏感行业的压力。然而，不确定性仍存，油价波动可能加剧。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": false,
+      "score": 50,
+      "level": "中",
+      "score_detail": {
+        "importance": 15,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 10
+      }
+    }
+  ]
+}
