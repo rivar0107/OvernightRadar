@@ -1,0 +1,60 @@
+{
+  "date": "2026-04-17",
+  "generated_at": "2026-04-17T01:26:06.954050",
+  "total": 2,
+  "metadata": {
+    "news_count": 30,
+    "raw_count": 4,
+    "processed_count": 4,
+    "final_count": 2,
+    "avg_score": 48.2,
+    "min_score": 50,
+    "ai_provider": "deepseek"
+  },
+  "signals": [
+    {
+      "title": "地缘风险持续，国防与能源安全板块获支撑",
+      "direction": "利多",
+      "sectors": [
+        "国防航天",
+        "能源",
+        "大宗商品"
+      ],
+      "action": "关注国防ETF（如ITA）及大型能源公司（XOM）的回调买入机会，避免追高。",
+      "reason": "新闻2、5、6、7表明军事对抗风险未完全消除，美国政策聚焦伊朗威胁。新闻3（延迟对欧军售）可能利好美国本土国防承包商。能源设施成为潜在目标，将支撑油价和能源公司股价，并凸显能源安全价值。",
+      "is_macro": true,
+      "under_priced": false,
+      "clear_action": false,
+      "score": 60,
+      "level": "中",
+      "score_detail": {
+        "importance": 25,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 10
+      }
+    },
+    {
+      "title": "美伊谈判转向临时协议，市场预期冲突缓和",
+      "direction": "利多",
+      "sectors": [
+        "科技",
+        "可选消费",
+        "工业"
+      ],
+      "action": "若市场因该消息高开，可关注前期受地缘风险压制的成长股（如半导体、软件、航空）的补涨机会；若市场反应平淡或低开，是分批建仓的时机。",
+      "reason": "新闻19显示美伊谈判转向临时协议，结合新闻1、18中市场对战争结束的期望，这是缓解市场最大不确定性的核心进展。风险偏好回升将最有利于对利率和增长敏感的科技股和周期股。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": false,
+      "score": 50,
+      "level": "中",
+      "score_detail": {
+        "importance": 15,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 10
+      }
+    }
+  ]
+}
