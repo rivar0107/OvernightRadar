@@ -1,0 +1,59 @@
+{
+  "date": "2026-04-20",
+  "generated_at": "2026-04-20T02:02:11.267660",
+  "total": 2,
+  "metadata": {
+    "news_count": 15,
+    "raw_count": 4,
+    "processed_count": 4,
+    "final_count": 2,
+    "avg_score": 48.0,
+    "min_score": 50,
+    "ai_provider": "deepseek"
+  },
+  "signals": [
+    {
+      "title": "霍尔木兹海峡再关闭，油价反弹",
+      "direction": "利多",
+      "sectors": [
+        "能源",
+        "国防航天"
+      ],
+      "action": "关注能源股（XLE）及主要油服公司（如HAL、SLB），若油价（WTI）站稳75美元上方且相关股票未过度高开（<3%），可考虑介入。",
+      "reason": "霍尔木兹海峡是全球关键石油运输通道，其关闭将直接冲击石油供应，推高油价，利好能源生产商及地缘风险相关的国防板块。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 53,
+      "level": "中",
+      "score_detail": {
+        "importance": 15,
+        "reach": 15,
+        "pricing": 5,
+        "clarity": 18
+      }
+    },
+    {
+      "title": "财报季密集来袭，考验市场涨势",
+      "direction": "中性",
+      "sectors": [
+        "科技",
+        "金融",
+        "消费"
+      ],
+      "action": "重点关注本周科技巨头（如META、AMZN）及主要消费公司财报。若财报超预期且股价反应积极，可顺势加仓；若财报不及预期，需警惕大盘回调风险，及时止损。",
+      "reason": "在宏观地缘风险背景下，企业基本面（盈利指引）将成为市场短期走势的关键驱动。强劲财报可能抵消部分地缘利空，而疲软财报则可能放大市场下跌。",
+      "is_macro": false,
+      "under_priced": false,
+      "clear_action": true,
+      "score": 51,
+      "level": "中",
+      "score_detail": {
+        "importance": 8,
+        "reach": 20,
+        "pricing": 5,
+        "clarity": 18
+      }
+    }
+  ]
+}
